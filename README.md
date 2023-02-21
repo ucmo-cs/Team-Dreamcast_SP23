@@ -1,25 +1,48 @@
 # Dreamcast Senior Project
 
-## Example Mermaid Diagrams
+## Local Dev Set Up
 
-### Class
+## Documentation
 ```mermaid
-    classDiagram
+erDiagram
+    EMPLOYEE ||--o{ SELFASSESMENT : has_many
+    EMPLOYEE ||--o{ MANAGERASSESMENT : has_many
+    EMPLOYEE ||--o{ DEVELOPMENTPLAN : has_many
+    EMPLOYEE {
+        int P-id
+        string firstName
+        string lastName
+        string position
+        bool isManager
+        int[] managedEmployees
+        selfAssesment[] selfassesments
+        developmentplan[] developmentplans
+        managerassesments[] reviews
+    }
 
-        ExampleClass-->anotherClass
+    SELFASSESMENT {
+        int P-id
+        int F-employeeID
+        string[] accomplishments
+        string takeyways
+        string allthefields
+    }
 
-        class ExampleClass{
-            +String attribute
-            -Int private
-            #Bool protected
-            -method()
-        }
+    DEVELOPMENTPLAN {
+        int P-id
+        int F-employeeID
+        string allthefields
+    }
 
-        class anotherClass{
-            +stuff
-            -things()
-        }
+    MANAGERASSESMENT {
+        int P-it
+        int F-mangerID
+        int F-employeeID
+        string allthefields
+    }
 ```
+
+
 
 ### Sequence
 ```mermaid
