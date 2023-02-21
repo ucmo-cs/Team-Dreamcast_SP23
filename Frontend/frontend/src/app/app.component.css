@@ -1,0 +1,26 @@
+.mat-toolbar {
+    background-color: black;
+    font-size: larger;
+    color: white;
+    font-weight: bold;
+    /* text-align: center;  DOES NOT WORK*/
+    height: 10%;
+}
+.example-spacer {
+    flex: 1 1 auto;
+}
+.background-box {
+    width: 85%;
+    height: 75%;
+    background-color: white;
+    border: 1px solid #A8A8A8;
+    border-radius: 50px;
+    position: absolute;
+    top: 17%;
+    left: 7%;
+    margin: auto;
+}
+.title {
+    padding: 20px;
+    text-align: center;
+}
