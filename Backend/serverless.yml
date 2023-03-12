@@ -1,0 +1,80 @@
+service: dreamcast-api
+frameworkVersion: '3'
+
+plugins:
+- serverless-dynamodb-local
+- serverless-offline
+
+# employees-table-dev
+custom:
+  employeesTableName: 'employees-table-${sls:stage}'
+  dynamodb:
+    stages:
+      - dev
+
+provider:
+  httpApi:
+    cors: true
+  name: aws
+  runtime: nodejs14.x
+  stage: ${opt:stage, 'dev'}
+  region: us-east-2
+  profile: default # You'll have to create your own profile with IAM creds to your AWS account
+
+  iam: # Role is applied globally to all functions below allowing access to dynamodb table JobsTable
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - Fn::GetAtt: [ JobsTable, Arn ]
+
+functions:
+  listItems:
+    handler: listItems.listItems
+    events:
+      - httpApi:
+          path: /{model}
+          method: get
+    environment:
+      EMPLOYEES_TABLE: ${self:custom.employeesTableName}
+      # add any other table names below here 
+
+  getItem:
+    handler: getItem.getItem
+    events:
+      - httpApi:
+          path: /{model}/{id}
+          method: get
+    environment:
+      EMPLOYEES_TABLE: ${self:custom.employeesTableName}
+      # add any other table names below here 
+
+  createEmployee:
+    handler: createEmployee.createEmployee
+    events:
+      - httpApi:
+          path: /employees
+          method: post
+    environment:
+      EMPLOYEES_TABLE: ${self:custom.employeesTableName}
+
+resources:
+  Resources:
+    EmployeeTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.employeesTableName}

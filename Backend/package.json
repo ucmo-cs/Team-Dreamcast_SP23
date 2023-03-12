@@ -1,0 +1,19 @@
+{
+  "name": "dreamcast_senior_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "serverless-dynamodb-local": "^0.2.30",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.1193.0",
+    "serverless-offline": "^12.0.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
