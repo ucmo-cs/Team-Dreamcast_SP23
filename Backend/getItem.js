@@ -16,14 +16,9 @@ exports.getItem = async (event, context, callback) => {
     console.log("EVENT:::", JSON.stringify(event));
 
     const tableName = event.pathParameters.model
-    console.log("\n\n");
-    console.log(tableName);
     const id = event.pathParameters.id;
     let table;
     switch (tableName) { //If you have other tables you would add them here as other case statements to reference that table.
-        case "jobs":
-            table = jobsTable;
-            break;
         case "employees":
             table = employeesTable;
             break;

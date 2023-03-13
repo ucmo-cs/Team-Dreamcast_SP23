@@ -18,9 +18,6 @@ exports.listItems = async (event, context, callback) => {
     const tableName = event.pathParameters.model
     let table;
     switch (tableName) {
-        case "jobs":
-            table = jobsTable;
-            break;
         case "employees":
             table = employeesTable;
             break;

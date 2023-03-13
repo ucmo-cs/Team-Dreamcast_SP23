@@ -1,13 +1,13 @@
 service: dreamcast-api
-frameworkVersion: '3'
+frameworkVersion: "3"
 
 plugins:
-- serverless-dynamodb-local
-- serverless-offline
+  - serverless-dynamodb-local
+  - serverless-offline
 
 # employees-table-dev
 custom:
-  employeesTableName: 'employees-table-${sls:stage}'
+  employeesTableName: "employees-table-${sls:stage}"
   dynamodb:
     stages:
       - dev
@@ -33,7 +33,7 @@ provider:
             - dynamodb:UpdateItem
             - dynamodb:DeleteItem
           Resource:
-            - Fn::GetAtt: [ JobsTable, Arn ]
+            - Fn::GetAtt: [JobsTable, Arn]
 
 functions:
   listItems:
@@ -44,7 +44,7 @@ functions:
           method: get
     environment:
       EMPLOYEES_TABLE: ${self:custom.employeesTableName}
-      # add any other table names below here 
+      # add any other table names below here
 
   getItem:
     handler: getItem.getItem
@@ -54,7 +54,16 @@ functions:
           method: get
     environment:
       EMPLOYEES_TABLE: ${self:custom.employeesTableName}
-      # add any other table names below here 
+      # add any other table names below here
+
+  deleteItem:
+    handler: deleteItem.deleteItem
+    events:
+      - httpApi:
+          path: /{model}/{id}
+          method: delete
+    environment:
+      EMPLOYEES_TABLE: ${self:custom.employeesTableName}
 
   createEmployee:
     handler: createEmployee.createEmployee
