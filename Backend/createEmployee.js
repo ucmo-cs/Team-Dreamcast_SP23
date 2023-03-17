@@ -4,6 +4,8 @@ const AWS = require('aws-sdk');
 const dynamoDb = new AWS.DynamoDB.DocumentClient({endpoint: 'http://localhost:8000'});
 const uuid = require('uuid');
 
+let testId = 0; // comment this out for normal use post man tests only
+
 exports.createEmployee = async (event, context, callback) => {
     let headers = {
         'Access-Control-Allow-Origin': '*',
@@ -25,10 +27,14 @@ exports.createEmployee = async (event, context, callback) => {
     let y = d.getFullYear();
     let dt = y + '/' + MM + '/' + dd;
 
+    // using this for postman tests only since it makes it easier to demo
+    testId++;
+
     const params = {
         TableName: process.env.EMPLOYEES_TABLE,
         Item: {
-            id: uuid.v1(),
+            // id: uuid.v1(),
+            id: testId.toString(), // same thing post man only
             firstName: data.firstName,
             lastName: data.lastName,
             isManager: data.isManager,
