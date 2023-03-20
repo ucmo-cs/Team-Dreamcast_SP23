@@ -8,6 +8,9 @@ plugins:
 # employees-table-dev
 custom:
   employeesTableName: "employees-table-${sls:stage}"
+  selfAssesmentTableName: "self-assesments-table-${sls:stage}"
+  managerAssesmentTableName: "manager-assesments-table-${sls:stage}"
+  developmentPlanTableName: "development-plans-table-${sls:stage}"
   dynamodb:
     stages:
       - dev
@@ -44,6 +47,7 @@ functions:
           method: get
     environment:
       EMPLOYEES_TABLE: ${self:custom.employeesTableName}
+      DEVELOPMENT_PLAN_TABLE: ${self:custom.developmentPlanTableName}
       # add any other table names below here
 
   getItem:
@@ -54,6 +58,7 @@ functions:
           method: get
     environment:
       EMPLOYEES_TABLE: ${self:custom.employeesTableName}
+      DEVELOPMENT_PLAN_TABLE: ${self:custom.developmentPlanTableName}
       # add any other table names below here
 
   deleteItem:
@@ -64,6 +69,7 @@ functions:
           method: delete
     environment:
       EMPLOYEES_TABLE: ${self:custom.employeesTableName}
+      DEVELOPMENT_PLAN_TABLE: ${self:custom.developmentPlanTableName}
 
   createEmployee:
     handler: createEmployee.createEmployee
@@ -73,6 +79,15 @@ functions:
           method: post
     environment:
       EMPLOYEES_TABLE: ${self:custom.employeesTableName}
+
+  createDevelopmentPlan:
+    handler: createDevelopmentPlan.createDevelopmentPlan
+    events:
+      - httpApi:
+          path: /development-plan
+          method: post
+    environment:
+      DEVELOPMENT_PLAN_TABLE: ${self:custom.developmentPlanTableName}
 
 resources:
   Resources:
@@ -87,3 +102,36 @@ resources:
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
         TableName: ${self:custom.employeesTableName}
+    SelfAssesmentTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.selfAssesmentTableName}
+    ManagerAssesmentTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.managerAssesmentTableName}
+    DevelopmentPlanTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.developmentPlanTableName}

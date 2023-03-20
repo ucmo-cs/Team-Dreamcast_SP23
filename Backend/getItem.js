@@ -1,10 +1,12 @@
 'use strict';
 
 const AWS = require('aws-sdk');
-const dynamoDb = new AWS.DynamoDB.DocumentClient({endpoint: 'http://localhost:8000'});
+const dynamoDb = new AWS.DynamoDB.DocumentClient({ endpoint: 'http://localhost:8000' });
 
 const jobsTable = process.env.JOBS_TABLE; //Grab the table name from env variables defined in serverless.yml
 const employeesTable = process.env.EMPLOYEES_TABLE;
+const developmentPlanTable = process.env.DEVELOPMENT_PLAN_TABLE;
+
 
 exports.getItem = async (event, context, callback) => {
     let headers = {
@@ -21,6 +23,9 @@ exports.getItem = async (event, context, callback) => {
     switch (tableName) { //If you have other tables you would add them here as other case statements to reference that table.
         case "employees":
             table = employeesTable;
+            break;
+        case "development-plan":
+            table = developmentPlanTable;
             break;
         default:
             throw new Error(`Unsupported resource: "${modelName}"`);
