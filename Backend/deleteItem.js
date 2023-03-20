@@ -5,6 +5,7 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient({ endpoint: 'http://localhost:8
 const uuid = require('uuid');
 
 const employeesTable = process.env.EMPLOYEES_TABLE;
+const developmentPlanTable = process.env.DEVELOPMENT_PLAN_TABLE;
 
 exports.deleteItem = async (event, context, callback) => {
     let headers = {
@@ -22,6 +23,9 @@ exports.deleteItem = async (event, context, callback) => {
     switch (tableName) {
         case "employees":
             table = employeesTable;
+            break;
+        case "development-plan":
+            table = developmentPlanTable;
             break;
         default:
             throw new Error(`Unsupported resource: "${modelName}"`);

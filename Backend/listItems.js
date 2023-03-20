@@ -5,6 +5,7 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient({endpoint: 'http://localhost:80
 
 const jobsTable = process.env.JOBS_TABLE;
 const employeesTable = process.env.EMPLOYEES_TABLE;
+const developmentPlanTable = process.env.DEVELOPMENT_PLAN_TABLE;
 
 exports.listItems = async (event, context, callback) => {
     let headers = {
@@ -20,6 +21,9 @@ exports.listItems = async (event, context, callback) => {
     switch (tableName) {
         case "employees":
             table = employeesTable;
+            break;
+        case "development-plan":
+            table = developmentPlanTable;
             break;
         default:
             throw new Error(`Unsupported resource: "${modelName}"`);
