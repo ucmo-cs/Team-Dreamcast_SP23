@@ -6,10 +6,13 @@ NOTE: subject to change since I'm not expecting this to be entirely revolutionar
  */
 'use strict'
 const AWS = require('aws-sdk');
-const dynamoDb = new AWS.DynamoDB.DocumentClient({endpoint: 'http://localhost:15002/'});
+const dynamoDb = new AWS.DynamoDB.DocumentClient({endpoint: 'http://localhost:8000/'});
 const uuid = require('uuid'); //maybe used as an identifier
 
-exports.developmentPlan = async(event, context, callback) => {
+let isPostmanMode = true;
+let postmanID = 0;
+
+exports.createDevelopmentPlan = async(event, context, callback) => {
     let headers = {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Credentials': true
@@ -31,16 +34,18 @@ exports.developmentPlan = async(event, context, callback) => {
       let dt = y + '/' + MM + '/' + dd;
 
       const params = {
-        Tablename: process.env.DEVELOPMENT_PLAN,
+        TableName: process.env.DEVELOPMENT_PLAN_TABLE,
         Item: {
-            id: uuid.v1(),
-            EmpId: uuid.v2(),//for the employee id as well...review later
-            //something here to indicate dev plan idk lol
+            id: isPostmanMode ? generateTestID().toString() : uuid.v1(),
+            employeeId: data.employeeId,
+            employeeName: data.employeeName,
+            goals: data.goals,
             createdDate: dt,
-            createdTimestamp: ts
+            createdTimestamp: ts,
+            updatedDate: dt,
+            updatedTimestamp: ts
         }
       }
-      console.log("development plan created");
 
       try{
         await dynamoDb.put(params).promise()
@@ -48,14 +53,14 @@ exports.developmentPlan = async(event, context, callback) => {
                 callback(null, {
                     statusCode,
                     headers,
-                    body: JSON.stringify({message: 'Created plan successfully!'})
+                    body: JSON.stringify({message: 'Created Development Plan Successfully!'})
                 });
             }).catch(err => {
                 console.log(err);
                 callback(null, {
                     statusCode: 500,
                     headers,
-                    body: JSON.stringify({message: 'Unable to Create plan'})
+                    body: JSON.stringify({message: 'Unable to Create Development Plan'})
                 });
             });
     } catch (err) {
@@ -70,3 +75,7 @@ function addZero(i) {
     return i;
 }
 
+function generateTestID() {
+    postmanID += 1;
+    return postmanID;
+};

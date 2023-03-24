@@ -4,9 +4,10 @@ const AWS = require('aws-sdk');
 const dynamoDb = new AWS.DynamoDB.DocumentClient({endpoint: 'http://localhost:8000'});
 const uuid = require('uuid');
 
-let testId = 0; // comment this out for normal use post man tests only
+let isPostmanMode = true;
+let postmanID = 0;
 
-exports.createEmployee = async (event, context, callback) => {
+exports.createManagerAssessment = async (event, context, callback) => {
     let headers = {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Credentials': true
@@ -27,23 +28,21 @@ exports.createEmployee = async (event, context, callback) => {
     let y = d.getFullYear();
     let dt = y + '/' + MM + '/' + dd;
 
-    // using this for postman tests only since it makes it easier to demo
-    testId++;
-
     const params = {
-        TableName: process.env.EMPLOYEES_TABLE,
+        TableName: process.env.MANAGER_ASSESSMENT_TABLE,
         Item: {
-            // id: uuid.v1(),
-            id: testId.toString(), // same thing post man only
-            firstName: data.firstName,
-            lastName: data.lastName,
-            isManager: data.isManager,
+            id: isPostmanMode ? generateTestID().toString() : uuid.v1(),
+            employeeId: data.employeeId,
+            employeeName: data.employeeName,
+            feedback: data.feedback,
             createdDate: dt,
-            createdTimestamp: ts
+            createdTimestamp: ts,
+            updatedDate: dt,
+            updatedTimestamp: ts
         }
     }
 
-    console.log("Creating Employee");
+    console.log("Creating Manager Assessment");
 
     try{
         await dynamoDb.put(params).promise()
@@ -51,14 +50,14 @@ exports.createEmployee = async (event, context, callback) => {
                 callback(null, {
                     statusCode,
                     headers,
-                    body: JSON.stringify({message: 'Created Employee Successfully!'})
+                    body: JSON.stringify({message: 'Created Manager Assessment Successfully!'})
                 });
             }).catch(err => {
                 console.log(err);
                 callback(null, {
                     statusCode: 500,
                     headers,
-                    body: JSON.stringify({message: 'Unable to Create Employee'})
+                    body: JSON.stringify({message: 'Unable to Create Manager Assessment'})
                 });
             });
     } catch (err) {
@@ -71,4 +70,9 @@ function addZero(i) {
         i = '0' + i;
     }
     return i;
-}
+};
+
+function generateTestID() {
+    postmanID += 1;
+    return postmanID;
+};
