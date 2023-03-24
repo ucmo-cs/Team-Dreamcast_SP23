@@ -1,10 +1,26 @@
-<body style="background-image: linear-gradient(to bottom right, #FBD333, #EF9D33)">
+<body class="gradient-background">
     <mat-toolbar>
-        <span class="example-spacer">Risen One Employee Portal</span>
-        <mat-icon>menu</mat-icon>
-        <mat-icon>account_circle</mat-icon>
+        <span class="toolbar-spacer">Risen One Employee Portal</span>
+        <button mat-icon-button>
+            <mat-icon>menu</mat-icon>
+        </button>
+        <button mat-icon-button>
+            <mat-icon>account_circle</mat-icon>
+        </button>
     </mat-toolbar>
     <div class="background-box">
         <h1 class="title">Employee Development</h1>
+        <mat-tab-group dynamicHeight mat-align-tabs="start">
+            <mat-tab>
+                <ng-template mat-tab-label>Professional Development Plan</ng-template>
+                <app-pdp1></app-pdp1>
+            </mat-tab>
+            <mat-tab label="Self Assessment">
+                <app-pdp2></app-pdp2>
+            </mat-tab>
+            <mat-tab label="Performance Evaluation">
+                <app-pdp3></app-pdp3>
+            </mat-tab>
+        </mat-tab-group>
     </div>
 </body>
