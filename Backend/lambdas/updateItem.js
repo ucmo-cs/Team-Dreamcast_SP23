@@ -1,3 +1,6 @@
+'use strict';
+
+var helpers = require("../helpers.js");
 const AWS = require('aws-sdk');
 const dynamoDb = new AWS.DynamoDB.DocumentClient({ endpoint: 'http://localhost:8000' });
 
@@ -26,12 +29,12 @@ exports.updateItem = async (event, context, callback) => {
 
     //create new timestamp value
     let d = new Date();
-    let h = addZero(d.getHours());
-    let m = addZero(d.getMinutes());
+    let h = helpers.addZero(d.getHours());
+    let m = helpers.addZero(d.getMinutes());
     let ts = h + ':' + m;
     //create new date value
-    let MM = addZero(d.getMonth() + 1);
-    let dd = addZero(d.getDate());
+    let MM = helpers.addZero(d.getMonth() + 1);
+    let dd = helpers.addZero(d.getDate());
     let y = d.getFullYear();
     let dt = y + '/' + MM + '/' + dd;
 
@@ -121,11 +124,4 @@ function getLambdaUpdateExpression(eventBody) {
     }
     updateExpression += " updatedTimestamp = :updatedTimestamp, updatedDate = :updatedDate"
     return updateExpression;
-}
-
-function addZero(i) {
-    if (i < 10) {
-        i = '0' + i;
-    }
-    return i;
 }
