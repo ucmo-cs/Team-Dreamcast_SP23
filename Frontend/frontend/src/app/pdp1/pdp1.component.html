@@ -1,0 +1,154 @@
+<div>
+    <h3>Personal Development Plan</h3>
+</div>
+<mat-grid-list cols="6" rowHeight="100px" style="left: 3%;">
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <div>
+            <label for="view-year">View Year</label>
+            <mat-form-field id="view-year" appearance="outline" class="md-field" style="width: 100px">
+                <mat-select id="view-year" [(value)]="selected">
+                    <mat-option value="2022">2022</mat-option>
+                    <mat-option value="2023">2023</mat-option>
+                    <mat-option value="2024">2024</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <div>
+            <label for="add-new-button"></label>
+            <a mat-flat-button href="https://www.google.com/" class="button4" target="_blank">Delete</a>
+            <a mat-flat-button href="https://www.google.com/" class="button4 second-button" target="_blank">Add New</a>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="6" rowHeight="100px" style="left: 3%;">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <div>
+            <label>Employee Name</label>
+            <mat-form-field appearance="fill">
+                <input matInput>
+            </mat-form-field>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="5" [rowspan]="1">
+        <div>
+            <label>Date Completed</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker1">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div>
+            <label>6-Month Check-In</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker2">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="6" rowHeight="150px" style="left: 3%;">
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <div class="div-space">
+            <label>Short-Term Goals</label>
+            <mat-form-field appearance="fill">
+                <textarea matInput>Goal text goes here.</textarea>
+            </mat-form-field>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <div>
+            <label>Mid-Term Goals (2-3 years)</label>
+            <mat-form-field appearance="fill" class="">
+                <textarea matInput>Goal text goes here.</textarea>
+            </mat-form-field>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <div>
+            <label>Long-Term Goals (5 years)</label>
+            <mat-form-field appearance="fill">
+                <textarea matInput>Goal text goes here.</textarea>
+            </mat-form-field>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="6" rowHeight="150px" style="left: 3%;">
+    <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <div>
+            <label>Development Needs</label>
+            <mat-form-field appearance="fill" class="">
+                <textarea matInput>Development needs text goes here.</textarea>
+            </mat-form-field>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <div>
+            <label>Action Plan</label>
+            <mat-form-field appearance="fill" class="">
+                <textarea matInput>Action plan text goes here.</textarea>
+            </mat-form-field>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="6" rowHeight="100px" style="left: 3%;">
+    <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <div>
+            <label>Employee Signature</label>
+            <mat-form-field appearance="fill">
+                <mat-label></mat-label>
+                <input matInput>
+            </mat-form-field>
+        </div>
+        <div>
+            <label>Date Signed</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker3">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+              </mat-form-field>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <div>
+            <label>Supervisor Signature</label>
+            <mat-form-field appearance="fill">
+                <mat-label></mat-label>
+                <input matInput>
+            </mat-form-field>
+        </div>
+        <div>
+            <label>Date Signed</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker4">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker4"></mat-datepicker-toggle>
+                <mat-datepicker #picker4></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="6" rowHeight="100px" style="left: 3%;">
+    <mat-grid-tile [colspan]="2" [rowspan]="1" [ngStyle]="">
+        <div style="padding: 0;">
+            <label for="export-to-pdf-button"></label>
+            <a mat-flat-button href="https://www.google.com/" class="button4" target="_blank">Export to PDF</a>
+            <a mat-flat-button href="https://www.google.com/" class="second-button button4" target="_blank">Save</a>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
