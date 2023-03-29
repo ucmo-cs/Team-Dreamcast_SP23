@@ -1,13 +1,14 @@
 'use strict';
 
 const AWS = require('aws-sdk');
-const dynamoDb = new AWS.DynamoDB.DocumentClient({ endpoint: 'http://localhost:8000' });
+const dynamoDb = new AWS.DynamoDB.DocumentClient({endpoint: 'http://localhost:8000'});
 
 const employeesTable = process.env.EMPLOYEES_TABLE;
 const developmentPlanTable = process.env.DEVELOPMENT_PLAN_TABLE;
+const managerAssessmentTable = process.env.MANAGER_ASSESSMENT_TABLE;
+const selfAssessmentTable = process.env.SELF_ASSESSMENT_TABLE;
 
-
-exports.getItem = async (event, context, callback) => {
+exports.listItems = async (event, context, callback) => {
     let headers = {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Credentials': true
@@ -17,29 +18,31 @@ exports.getItem = async (event, context, callback) => {
     console.log("EVENT:::", JSON.stringify(event));
 
     const tableName = event.pathParameters.model
-    const id = event.pathParameters.id;
     let table;
-    switch (tableName) { //If you have other tables you would add them here as other case statements to reference that table.
+    switch (tableName) { 
         case "employees":
             table = employeesTable;
             break;
         case "development-plan":
             table = developmentPlanTable;
             break;
+        case "manager-assessment":
+            table = managerAssessmentTable;
+            break;
+        case "self-assessment":
+            table = selfAssessmentTable;
+            break;
         default:
             throw new Error(`Unsupported resource: "${modelName}"`);
     }
 
     const params = {
-        TableName: table,
-        Key: {
-            'id': id,
-        }
+        TableName: table
     }
 
     console.log("Getting Items from table:::", table);
 
-    await dynamoDb.get(params, (error, data) => {
+    await dynamoDb.scan(params, (error, data) => {
         if (error) {
             console.log('Scan failed. Error JSON:', JSON.stringify(error, null, 2));
             callback(error);
@@ -48,7 +51,7 @@ exports.getItem = async (event, context, callback) => {
         const response = {
             statusCode,
             headers,
-            body: JSON.stringify(data.Item)
+            body: JSON.stringify(data.Items)
         }
         callback(null, response);
     }).promise();

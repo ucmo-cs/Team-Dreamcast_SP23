@@ -40,7 +40,7 @@ provider:
 
 functions:
   listItems:
-    handler: listItems.listItems
+    handler: lambdas/listItems.listItems
     events:
       - httpApi:
           path: /{model}
@@ -48,10 +48,12 @@ functions:
     environment:
       EMPLOYEES_TABLE: ${self:custom.employeesTableName}
       DEVELOPMENT_PLAN_TABLE: ${self:custom.developmentPlanTableName}
+      MANAGER_ASSESSMENT_TABLE: ${self:custom.managerAssesmentTableName}
+      SELF_ASSESSMENT_TABLE: ${self:custom.selfAssesmentTableName}
       # add any other table names below here
 
   getItem:
-    handler: getItem.getItem
+    handler: lambdas/getItem.getItem
     events:
       - httpApi:
           path: /{model}/{id}
@@ -59,10 +61,24 @@ functions:
     environment:
       EMPLOYEES_TABLE: ${self:custom.employeesTableName}
       DEVELOPMENT_PLAN_TABLE: ${self:custom.developmentPlanTableName}
+      MANAGER_ASSESSMENT_TABLE: ${self:custom.managerAssesmentTableName}
+      SELF_ASSESSMENT_TABLE: ${self:custom.selfAssesmentTableName}
       # add any other table names below here
 
+  updateItem:
+    handler: lambdas/updateItem.updateItem
+    events:
+      - httpApi:
+          path: /{model}/{id}
+          method: patch
+    environment:
+      EMPLOYEES_TABLE: ${self:custom.employeesTableName}
+      DEVELOPMENT_PLAN_TABLE: ${self:custom.developmentPlanTableName}
+      MANAGER_ASSESSMENT_TABLE: ${self:custom.managerAssesmentTableName}
+      SELF_ASSESSMENT_TABLE: ${self:custom.selfAssesmentTableName}
+
   deleteItem:
-    handler: deleteItem.deleteItem
+    handler: lambdas/deleteItem.deleteItem
     events:
       - httpApi:
           path: /{model}/{id}
@@ -70,9 +86,11 @@ functions:
     environment:
       EMPLOYEES_TABLE: ${self:custom.employeesTableName}
       DEVELOPMENT_PLAN_TABLE: ${self:custom.developmentPlanTableName}
+      MANAGER_ASSESSMENT_TABLE: ${self:custom.managerAssesmentTableName}
+      SELF_ASSESSMENT_TABLE: ${self:custom.selfAssesmentTableName}
 
   createEmployee:
-    handler: createEmployee.createEmployee
+    handler: lambdas/createItems/createEmployee.createEmployee
     events:
       - httpApi:
           path: /employees
@@ -81,13 +99,31 @@ functions:
       EMPLOYEES_TABLE: ${self:custom.employeesTableName}
 
   createDevelopmentPlan:
-    handler: createDevelopmentPlan.createDevelopmentPlan
+    handler: lambdas/createItems/createDevelopmentPlan.createDevelopmentPlan
     events:
       - httpApi:
           path: /development-plan
           method: post
     environment:
       DEVELOPMENT_PLAN_TABLE: ${self:custom.developmentPlanTableName}
+
+  createManagerAssesment:
+    handler: lambdas/createItems/createManagerAssessment.createManagerAssessment
+    events:
+      - httpApi:
+          path: /manager-assessment
+          method: post
+    environment:
+      MANAGER_ASSESSMENT_TABLE: ${self:custom.managerAssesmentTableName}
+
+  createSelfAssesment:
+    handler: lambdas/createItems/createSelfAssessment.createSelfAssessment
+    events:
+      - httpApi:
+          path: /self-assessment
+          method: post
+    environment:
+      SELF_ASSESSMENT_TABLE: ${self:custom.selfAssesmentTableName}
 
 resources:
   Resources:

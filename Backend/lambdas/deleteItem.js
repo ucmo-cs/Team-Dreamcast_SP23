@@ -6,12 +6,15 @@ const uuid = require('uuid');
 
 const employeesTable = process.env.EMPLOYEES_TABLE;
 const developmentPlanTable = process.env.DEVELOPMENT_PLAN_TABLE;
+const managerAssessmentTable = process.env.MANAGER_ASSESSMENT_TABLE;
+const selfAssessmentTable = process.env.SELF_ASSESSMENT_TABLE;
 
 exports.deleteItem = async (event, context, callback) => {
     let headers = {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Credentials': true
     };
+
     let statusCode = 200;
 
     console.log("EVENT:::", JSON.stringify(event));
@@ -19,13 +22,18 @@ exports.deleteItem = async (event, context, callback) => {
     const tableName = event.pathParameters.model
     const id = event.pathParameters.id;
     let table;
-
-    switch (tableName) {
+    switch (tableName) { 
         case "employees":
             table = employeesTable;
             break;
         case "development-plan":
             table = developmentPlanTable;
+            break;
+        case "manager-assessment":
+            table = managerAssessmentTable;
+            break;
+        case "self-assessment":
+            table = selfAssessmentTable;
             break;
         default:
             throw new Error(`Unsupported resource: "${modelName}"`);
@@ -38,9 +46,7 @@ exports.deleteItem = async (event, context, callback) => {
         }
     }
 
-    console.log("Deleting item from the table:::", table);
-
-    console.log("\n\n" + id);
+    console.log("Updating table item:::", table);
 
     try {
         await dynamoDb.delete(params).promise()
