@@ -1,7 +1,7 @@
 'use strict';
 
 const AWS = require('aws-sdk');
-const dynamoDb = new AWS.DynamoDB.DocumentClient({endpoint: 'http://localhost:8000'});
+const dynamoDb = new AWS.DynamoDB.DocumentClient({endpoint: 'http://localhost:15002/'});
 const uuid = require('uuid');
 
 exports.createEmployee = async (event, context, callback) => {
