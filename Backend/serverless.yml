@@ -10,7 +10,9 @@ custom:
   employeesTableName: "employees-table-${sls:stage}"
   dynamodb:
     stages:
-      - dev
+      - dev # can take away, won't need it
+    start:
+      port: 15002
 
 provider:
   httpApi:
@@ -33,7 +35,7 @@ provider:
             - dynamodb:UpdateItem
             - dynamodb:DeleteItem
           Resource:
-            - Fn::GetAtt: [JobsTable, Arn]
+            - Fn::GetAtt: [EmployeeTable, Arn] # changed from JobsTable to EmployeeTable since that is what you're actually running
 
 functions:
   listItems:

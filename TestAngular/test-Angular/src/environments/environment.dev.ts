@@ -4,10 +4,12 @@
 
 //TODO: Replace the xxxxx in the below url with the url created in API Gateway after deploying the backend via serverless.
 
+//4/5/23 added the invoke url provided by harris, though it will need to be re-deployed since i changed the iam portion of the serverless.yml file
+
 export const environment = {
     state: 'development',
     production: false,
-    apiUrl: 'http://localhost:3000/employees',
+    apiUrl: 'https://5guuo81sr4.execute-api.us-east-2.amazonaws.com',
     
   }
   

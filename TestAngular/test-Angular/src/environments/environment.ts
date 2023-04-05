@@ -5,10 +5,13 @@
 
 //TODO: Replace the xxxxx in the below url with the url created in API Gateway after deploying the backend via serverless.
 
+//4/5/23 changed .prod to .local and added the local host postman gave so it hits on it
+//doesn't really concern this file really, since this is the baseline, but important to mention
+
 export const environment = {
   state: 'local',
   production: false,
-  apiUrl: 'https://xxxxx.execute-api.us-east-1.amazonaws.com',
+  apiUrl: 'http://localhost:3000',
 }
 
 /*
