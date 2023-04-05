@@ -1,3 +1,5 @@
+org: hgchilds1016
+app: dreamcast-api
 service: dreamcast-api
 frameworkVersion: "3"
 
@@ -36,7 +38,10 @@ provider:
             - dynamodb:UpdateItem
             - dynamodb:DeleteItem
           Resource:
-            - Fn::GetAtt: [JobsTable, Arn]
+            - Fn::GetAtt: [EmployeeTable, Arn]
+            - Fn::GetAtt: [SelfAssesmentTable, Arn]
+            - Fn::GetAtt: [ManagerAssesmentTable, Arn]
+            - Fn::GetAtt: [DevelopmentPlanTable, Arn]
 
 functions:
   listItems:

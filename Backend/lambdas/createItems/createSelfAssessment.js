@@ -1,6 +1,6 @@
 'use strict';
 
-var helpers = require("../../helpers.js");
+
 const AWS = require('aws-sdk');
 const dynamoDb = new AWS.DynamoDB.DocumentClient({endpoint: 'http://localhost:8000'});
 const uuid = require('uuid');
@@ -20,19 +20,19 @@ exports.createSelfAssessment = async (event, context, callback) => {
 
     //create new timestamp value
     let d = new Date();
-    let h = helpers.addZero(d.getHours());
-    let m = helpers.addZero(d.getMinutes());
+    let h = addZero(d.getHours());
+    let m = addZero(d.getMinutes());
     let ts = h + ':' + m;
     //create new date value
-    let MM = helpers.addZero(d.getMonth()+1);
-    let dd = helpers.addZero(d.getDate());
+    let MM = addZero(d.getMonth()+1);
+    let dd = addZero(d.getDate());
     let y = d.getFullYear();
     let dt = y + '/' + MM + '/' + dd;
 
     const params = {
         TableName: process.env.SELF_ASSESSMENT_TABLE,
         Item: {
-            id: isPostmanMode ? helpers.generateTestID(postmanID).toString() : uuid.v1(),
+            id: isPostmanMode ? generateTestID(postmanID).toString() : uuid.v1(),
             employeeId: data.employeeId,
             employeeName: data.employeeName,
             goals: data.goals,
@@ -64,4 +64,16 @@ exports.createSelfAssessment = async (event, context, callback) => {
     } catch (err) {
         return { error: err }
     }
+};
+
+function addZero(i) {
+    if (i<10) {
+        i = '0' + i;
+    }
+    return i;
+}
+
+function generateTestID(postmanID) {
+    postmanID += 1;
+    return postmanID;
 };
