@@ -1,10 +1,14 @@
 'use strict';
 
+
 const AWS = require('aws-sdk');
-const dynamoDb = new AWS.DynamoDB.DocumentClient({endpoint: 'http://localhost:15002/'});
+const dynamoDb = new AWS.DynamoDB.DocumentClient({endpoint: 'http://localhost:8000'});
 const uuid = require('uuid');
 
-exports.createEmployee = async (event, context, callback) => {
+let isPostmanMode = true;
+let postmanID = 0;
+
+exports.createSelfAssessment = async (event, context, callback) => {
     let headers = {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Credentials': true
@@ -26,18 +30,20 @@ exports.createEmployee = async (event, context, callback) => {
     let dt = y + '/' + MM + '/' + dd;
 
     const params = {
-        TableName: process.env.EMPLOYEES_TABLE,
+        TableName: process.env.SELF_ASSESSMENT_TABLE,
         Item: {
-            id: uuid.v1(),
-            firstName: data.firstName,
-            lastName: data.lastName,
-            isManager: data.isManager,
+            id: isPostmanMode ? generateTestID(postmanID).toString() : uuid.v1(),
+            employeeId: data.employeeId,
+            employeeName: data.employeeName,
+            goals: data.goals,
             createdDate: dt,
-            createdTimestamp: ts
+            createdTimestamp: ts,
+            updatedDate: dt,
+            updatedTimestamp: ts
         }
     }
 
-    console.log("Creating Employee");
+    console.log("Creating Self Assessment");
 
     try{
         await dynamoDb.put(params).promise()
@@ -45,14 +51,14 @@ exports.createEmployee = async (event, context, callback) => {
                 callback(null, {
                     statusCode,
                     headers,
-                    body: JSON.stringify({message: 'Created Employee Successfully!'})
+                    body: JSON.stringify({message: 'Created Self Assessment Successfully!'})
                 });
             }).catch(err => {
                 console.log(err);
                 callback(null, {
                     statusCode: 500,
                     headers,
-                    body: JSON.stringify({message: 'Unable to Create Employee'})
+                    body: JSON.stringify({message: 'Unable to Create Self Assessment'})
                 });
             });
     } catch (err) {
@@ -66,3 +72,8 @@ function addZero(i) {
     }
     return i;
 }
+
+function generateTestID(postmanID) {
+    postmanID += 1;
+    return postmanID;
+};

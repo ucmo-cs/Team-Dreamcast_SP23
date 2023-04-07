@@ -1,0 +1,140 @@
+<mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+      <h2 class="title" style="text-align: center">Self Assessment</h2>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <div class="label-align-left">
+      <label style="margin: 0;">View Year</label><br>
+      <mat-form-field appearance="outline" class="md-field">
+        <mat-label>Year</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let year of years" [value]="year.value">
+            {{year.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <button mat-raised-button class="button-white">Delete</button>
+      <button mat-raised-button class="button-yellow">Add New</button> 
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <div class="label-align-left">
+        <label for="name" style="margin: 5px;">Employee Name</label><br>
+        <input type="text" id="name" name="name" value="John Doe" class="name-textbox">
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <div class="label-align-left">
+        <label for="complete" style="margin: 5px;">Date Completed</label><br>
+        <input type="date" id="complete" name="complete" class="name-textbox">
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="1" rowHeight="50">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <label for="name">List 3 accomplishments you had for the year:</label>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <input type="text" id="name" name="name" value="Accomplishment text goes here." class="textbox-skinny">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <input type="text" id="name" name="name" value="Accomplishment text goes here." class="textbox-skinny">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <input type="text" id="name" name="name" value="Accomplishment text goes here." class="textbox-skinny">
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="2" rowHeight="25">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <label for="takeaway" >What has been your biggest takeaway from this past year?</label>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <label for="overcame">Describe a hard task/project you overcame. What did you learn from it?</label>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="4">
+        <input type="text" id="takeaway" name="takeaway" value="Answer goes here.">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="4">
+      <input type="text" id="overcame" name="overcame" value="Answer goes here.">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <label for="improve" >In what ways do you think you can improve your performance?</label>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <label for="support">What actions are needed to support the improvement?</label>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="4">
+      <input type="text" id="improve" name="improve" value="Answer goes here.">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="4">
+      <input type="text" id="support" name="support" value="Answer goes here.">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <label for="barriers" >What barriers or hurdles exist to improving your experience?</label>
+  </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <label for="metrics">What metrics/milestones can we use to make sure you're on track?</label><br>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="4">
+        <input type="text" id="barriers" name="barriers" value="Answer goes here.">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="4">
+      <input type="text" id="metrics" name="metrics" value="Answer goes here.">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <label for="accountability" style="text-align: center;">How will you hold yourself accountable for acheiving goals and results?</label>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="4">
+      <input type="text" id="accountability" name="accountability" value="Answer goes here." style="width:50%">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <label for="positivePerformance" >Please list examples of positive performance from this year.</label>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <label for="improveExample">Please list examples where performance could have improved.</label>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="4">
+      <input type="text" id="positivePerformance" name="positivePerformance" value="Answer goes here.">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="4">
+      <input type="text" id="improveExample" name="improveExample" value="Answer goes here.">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <label for="goal" >What is your main goal for this year?</label>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <label for="learning">Please list examples where performance could have improved.</label>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="4">
+      <input type="text" id="goal" name="goal" value="Answer goes here.">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="4">
+      <input type="text" id="learning" name="learning" value="Answer goes here.">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <label for="leadership" >Are there any areas where your leadership team can improve?</label>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <label for="feedback">Any thoughts/feedback you would like us to know?</label>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="4">
+      <input type="text" id="leadership" name="leadership" value="Answer goes here.">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="4">
+      <input type="text" id="feedback" name="feedback" value="Answer goes here.">
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]="3" [rowspan]="1"></mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <button mat-raised-button class="button-white">Export to PDF</button>
+      <button mat-raised-button class="button-yellow">Save</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+  
