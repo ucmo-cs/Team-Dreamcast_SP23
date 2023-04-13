@@ -12,6 +12,5 @@ export class AppComponent {
   constructor(public router: Router) {
 
   }
-  title = 'app works!';
+  title = 'Risen One Employee Portal';
 }
-// ye haw
