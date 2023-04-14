@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PDP1Component } from './pdp1/pdp1.component';
 import { PDP2Component } from './pdp2/pdp2.component';
 import { PDP3Component } from './pdp3/pdp3.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { PDP3Component } from './pdp3/pdp3.component';
     PDP3Component,
     PDP1Component,
     PDP2Component,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ import { PDP3Component } from './pdp3/pdp3.component';
     MatNativeDateModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
