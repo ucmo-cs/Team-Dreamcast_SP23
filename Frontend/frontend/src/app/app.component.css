@@ -1,4 +1,3 @@
-/* CSS FOR TOOLBAR */
 .mat-toolbar {
     background-color: black;
     font-size: larger;
@@ -6,10 +5,10 @@
     font-weight: bold;
     height: 10%;
 }
+
 .toolbar-spacer {
     flex: 1 1 auto;
 }
-/* END OF TOOLBAR CSS */
 
 .gradient-background {
     background-image: linear-gradient(to bottom right, #FBD333, #EF9D33);
@@ -31,11 +30,10 @@
     margin-top: 5%;
     margin-bottom: 5%;
 }
+
 .title {
     padding: 20px;
     text-align: center;
 }
 
-/* CSS FOR TABS
- * Need to change color, active background, active color, and hover */
-/* END OF TAB CSS */
+/* Need to change active background and active color */
