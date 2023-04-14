@@ -5,7 +5,7 @@ const AWS = require('aws-sdk');
 const dynamoDb = new AWS.DynamoDB.DocumentClient({endpoint: 'http://localhost:8000'});
 const uuid = require('uuid');
 
-let isPostmanMode = true;
+let isPostmanMode = false;
 let postmanID = 0;
 
 exports.createEmployee = async (event, context, callback) => {

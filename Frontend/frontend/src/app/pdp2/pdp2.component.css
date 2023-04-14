@@ -1,69 +1,57 @@
-.button-yellow{
-    background-color: #E0AA51 !important; 
-    color:white  !important;
-    margin: 20px; 
-    margin-right: 10px;
-    border-radius: 50px;
-    border-width: 3px;
-}
-  
-.button-white{
-    color:#E0AA51 !important; 
-    border:2px solid #E0AA51 !important;
-    margin: 10px; 
-    margin-right: 20px;
-    border-radius: 50px;
-    border-width: 3px;
+h2 {
+  padding: 15px;
+  text-align: center;
 }
 
-.name-textbox{
-    padding: 12px 20px;
-    margin: 8px 30px;
-    margin-left: 0px;
-    display: inline-block;
-    border: none;
-    border-bottom: 1px solid #ccc;
-    box-sizing: border-box;
-    color:rgb(120 120, 120);
+.button-yellow {
+  background-color: #E0AA51 !important; 
+  color:white !important;
+  margin: 20px; 
+  margin-right: 10px;
+  border-radius: 50px;
+  border-width: 3px;
 }
   
-    .textbox-skinny{
-      display: flex;
-      width: 95%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-      color:rgb(120 120, 120);
-    }
+.button-white {
+  color:#E0AA51 !important; 
+  border:2px solid #E0AA51 !important;
+  margin: 10px; 
+  margin-right: 20px;
+  border-radius: 50px;
+  border-width: 3px;
+}
   
-    input{
-      width: 90%;
-      padding: 15px 15px;
-      padding-bottom: 40px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-      color:rgb(120 120, 120);
-      float: left;
-    }
+.name-textbox {
+  height: 100%;
+  width: 100%;
+}
   
-    label{
-      color:rgb(149, 149, 149);
-      font-size: small;
-      width: 95%;
-      margin-left: 35px;
-      text-align: left;
-    }
+.textbox-skinny {
+  width: 95%;
+  height: 100%;
+  display: block;
+}
   
-    .md-field {
-      width: 100px;
-      float:left;
-    }
+.textbox-tall {
+  width: 90%;
+  height: 100%;
+  display: float;
+}
   
-    .label-align-left{
-      position: absolute;
-      left: 20px;
-    }  
+label {
+  color:rgb(149, 149, 149);
+  font-size: small;
+  width: 95%;
+  margin-left: 35px;
+  text-align: left;
+}
+  
+.md-field {
+  width: 100px;
+  float:left;
+}
+  
+.label-align-left {
+  position: absolute;
+  left: 20px;
+}  

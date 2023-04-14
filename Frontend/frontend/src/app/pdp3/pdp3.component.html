@@ -1,25 +1,34 @@
-<h2 class="title">Performance Evaluation</h2>
-<label class="view-year">View Year</label>
+<h2>Performance Evaluation</h2>
+<mat-grid-list cols="6" rowHeight="100px">
+    <mat-grid-tile colspan="2">
+        <div class="label-align-left">
+            <label class="view-year-label">View Year</label>
+            <br>
+            <mat-form-field class="select-year" appearance="outline">
+                <mat-select placeholder="Year">
+                    <mat-option value="2022">2022</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3"></mat-grid-tile>
+    <mat-grid-tile>
+        <button mat-stroked-button class="export">Export to PDF</button>
+    </mat-grid-tile>
+</mat-grid-list>
 <br>
-<mat-form-field class="select-year">
-    <mat-select>
-        <mat-option value="2022">2022</mat-option>
-    </mat-select>
-</mat-form-field>
-<button mat-stroked-button class="export">Export to PDF</button>
-<mat-grid-list class="grid" cols="6" rows="2" rowHeight="20px">
+<br>
+<mat-grid-list cols="6" rowHeight="20px">
     <mat-grid-tile>
-        <div class="grid-text-small-label">Employee Name</div>
+        <label class="grid-text-small-label">Employee Name</label>
     </mat-grid-tile>
     <mat-grid-tile>
-        <div class="grid-text-small-label">Supervisor Name</div>
+        <label class="grid-text-small-label">Supervisor Name</label>
     </mat-grid-tile>
     <mat-grid-tile>
-        <div class="grid-text-small-label">Date Completed</div>
+        <label class="grid-text-small-label">Date Completed</label>
     </mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile colspan="3"></mat-grid-tile>
     <mat-grid-tile>
         <div class="grid-text">John Doe</div>
     </mat-grid-tile>
@@ -33,7 +42,7 @@
 <br>
 <br>
 <br>
-<mat-grid-list class="grid" cols="2" rows="1" rowHeight="20px">
+<mat-grid-list cols="2" rowHeight="15px">
     <mat-grid-tile>
         <div class="grid-text-large-label">Communication</div>
     </mat-grid-tile>
@@ -42,22 +51,22 @@
     </mat-grid-tile>
 </mat-grid-list>
 <br>
-<mat-grid-list class="grid" cols="6" rows="2" rowHeight="20px">
+<mat-grid-list cols="6" rows="2" rowHeight="20px">
     <mat-grid-tile>
         <div class="grid-text-small-label">Rating</div>
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile colspan="2">
         <div class="grid-text-small-label">Feedback</div>
     </mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
     <mat-grid-tile>
         <div class="grid-text-small-label">Rating</div>
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile colspan="2">
         <div class="grid-text-small-label">Feedback</div>
     </mat-grid-tile>
 </mat-grid-list>
-<mat-grid-list class="grid" cols="6" rows="2" rowHeight="20px">
+
+<mat-grid-list class="grid" cols="6" rows="2" rowHeight="40px">
     <mat-grid-tile>
         <div class="grid-text">Outstanding</div>
     </mat-grid-tile>
@@ -74,7 +83,7 @@
 <br>
 <br>
 <br>
-<mat-grid-list class="grid" cols="2" rows="1" rowHeight="20px">
+<mat-grid-list cols="2" rows="1" rowHeight="20px">
     <mat-grid-tile>
         <div class="grid-text-large-label">Quality and Accuracy of Work</div>
     </mat-grid-tile>
@@ -83,22 +92,22 @@
     </mat-grid-tile>
 </mat-grid-list>
 <br>
-<mat-grid-list class="grid" cols="6" rows="2" rowHeight="20px">
+<mat-grid-list cols="6" rows="2" rowHeight="20px">
     <mat-grid-tile>
         <div class="grid-text-small-label">Rating</div>
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile colspan="2">
         <div class="grid-text-small-label">Feedback</div>
     </mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
     <mat-grid-tile>
         <div class="grid-text-small-label">Rating</div>
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile colspan="2">
         <div class="grid-text-small-label">Feedback</div>
     </mat-grid-tile>
 </mat-grid-list>
-<mat-grid-list class="grid" cols="6" rows="2" rowHeight="20px">
+
+<mat-grid-list cols="6" rows="2" rowHeight="40px">
     <mat-grid-tile>
         <div class="grid-text">Outstanding</div>
     </mat-grid-tile>
@@ -115,33 +124,31 @@
 <br>
 <br>
 <br>
-<mat-grid-list class="grid" cols="2" rows="1" rowHeight="20px">
+<mat-grid-list cols="2" rows="1" rowHeight="20px">
     <mat-grid-tile>
         <div class="grid-text-large-label">Goal Accomplishment and Deadline Timelines</div>
     </mat-grid-tile>
     <mat-grid-tile></mat-grid-tile>
 </mat-grid-list>
 <br>
-<mat-grid-list class="grid" cols="6" rows="2" rowHeight="20px">
+<mat-grid-list cols="6" rows="2" rowHeight="20px">
     <mat-grid-tile>
         <div class="grid-text-small-label">Rating</div>
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile colspan="2">
         <div class="grid-text-small-label">Feedback</div>
     </mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile colspan="3"></mat-grid-tile>
 </mat-grid-list>
-<mat-grid-list class="grid" cols="6" rows="2" rowHeight="20px">
+
+<mat-grid-list cols="6" rows="2" rowHeight="40px">
     <mat-grid-tile>
         <div class="grid-text">Outstanding</div>
     </mat-grid-tile>
     <mat-grid-tile colspan="2">
         <div class="grid-text">Supervisor feedback goes here.</div>
     </mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile colspan="3"></mat-grid-tile>
 </mat-grid-list>
+<br>
+<br>
