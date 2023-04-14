@@ -17,6 +17,11 @@ export class HomeComponent {
       console.log(res);
     });
   }
+  createEmployee(){
+    this.api.createEmployee().subscribe((res:any)=>{
+      console.log(res);
+    });
+  }
 
 
 }

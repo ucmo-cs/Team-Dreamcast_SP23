@@ -16,4 +16,7 @@ export class ApiService {
   getEmployees() {
     return this.http.get<any>(this.employeeURL);
   }
+  createEmployee(){
+    return this.http.get<any>(this.employeeURL);
+  }
 }
