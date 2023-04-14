@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, Validators, FormControl} from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-import * as moment from 'moment';
+// import * as moment from 'moment';
 // import { MatToolbarModule } from '@angular/material/toolbar';
 // import { MatIconModule } from '@angular/material/icon';
 // import { MatTabsModule} from '@angular/material/tabs';
@@ -13,6 +13,11 @@ export interface Tile {
   cols: number;
   rows: number;
   text: string;
+}
+
+interface Year {
+  value: string;
+  viewValue: string;
 }
 
 @Component({
@@ -32,9 +37,15 @@ export class PDP1Component {
   
   year = new Date().getFullYear();
   selected = this.year.toString();
+
+  years: Year[] = [
+    {value: 'year-0', viewValue: '2023'},
+    {value: 'year-1', viewValue: '2022'},
+    {value: 'year-2', viewValue: '2021'},
+  ];
  
-  currentDate = moment();
-  date = new FormControl({ value: this.currentDate.format('DD/MM/YYYY'), disabled: true });
+  // currentDate = moment();
+  // date = new FormControl({ value: this.currentDate.format('DD/MM/YYYY'), disabled: true });
 }
 
 // date: new FormControl({value: null, disabled: true})
