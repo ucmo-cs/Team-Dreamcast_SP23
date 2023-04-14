@@ -3,6 +3,7 @@
 const AWS = require('aws-sdk');
 const dynamoDb = new AWS.DynamoDB.DocumentClient({ endpoint: 'http://localhost:8000' });
 
+
 const employeesTable = process.env.EMPLOYEES_TABLE;
 const developmentPlanTable = process.env.DEVELOPMENT_PLAN_TABLE;
 const managerAssessmentTable = process.env.MANAGER_ASSESSMENT_TABLE;

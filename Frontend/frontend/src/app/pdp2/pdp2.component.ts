@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../api.service';
+
 
 interface Year {
   value: string;
@@ -17,6 +19,20 @@ export interface Tile {
   styleUrls: ['./pdp2.component.css']
 })
 export class PDP2Component {
+  constructor(private api: ApiService){}
+
+  getEmployees() {
+    this.api.getEmployees().subscribe((res:any)=>{
+      console.log(res);
+    });
+  }
+
+  getASelfAssessment(assessmentId:number) {
+    this.api.getASelfAssessments(assessmentId).subscribe((res:any)=> {
+      console.log(res);
+    })
+  }
+
   title = 'Risen One Company Portal';
 
   tiles: Tile[] = [
@@ -41,7 +57,3 @@ export class PDP2Component {
     {value: 'year-2', viewValue: '2021'},
   ];
 }
-
-// export class GridListDynamicExample {
-  
-// }
