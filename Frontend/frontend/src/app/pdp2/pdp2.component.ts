@@ -27,6 +27,12 @@ export class PDP2Component {
     });
   }
 
+  getASelfAssessment(assessmentId:number) {
+    this.api.getASelfAssessments(assessmentId).subscribe((res:any)=> {
+      console.log(res);
+    })
+  }
+
   title = 'Risen One Company Portal';
 
   tiles: Tile[] = [
@@ -51,7 +57,3 @@ export class PDP2Component {
     {value: 'year-2', viewValue: '2021'},
   ];
 }
-
-// export class GridListDynamicExample {
-  
-// }
