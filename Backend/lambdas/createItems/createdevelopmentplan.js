@@ -10,7 +10,7 @@ const AWS = require('aws-sdk');
 const dynamoDb = new AWS.DynamoDB.DocumentClient({endpoint: 'http://localhost:8000/'});
 const uuid = require('uuid'); //maybe used as an identifier
 
-let isPostmanMode = true;
+let isPostmanMode = false;
 let postmanID = 0;
 
 exports.createDevelopmentPlan = async(event, context, callback) => {

@@ -1,37 +1,45 @@
-.title {
+h2 {
+    padding: 15px;
     text-align: center;
 }
-.view-year {
+
+.left-align-label {
+    position: absolute;
+    left: 20px;
+}
+
+.view-year-label {
+    position: absolute;
     color: #B8B8B8;
     font-size: 14px;
-    padding: 8%;
+    margin: 0;
 }
+
 .select-year {
-    padding-left: 8%;
-    padding-top: -5%;
+    width: 50%;
 }
+
 .export {
     border-radius: 50px;
     border-width: 3px;
-    left: 70%;
     color: #E0AA51 !important;
     border-color: #E0AA51 !important;
 }
-.grid {
-    left: 3%;
-}
+
 .grid-text-small-label {
     position: absolute;
     color: #B8B8B8;
     font-size: 14px;
     left: 95px;
 }
+
 .grid-text-large-label {
     position: absolute;
     font-weight: bold;
     left: 95px;
 
 }
+
 .grid-text {
     position: absolute;
     left: 95px;
