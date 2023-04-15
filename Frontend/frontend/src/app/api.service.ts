@@ -24,7 +24,7 @@ export class ApiService {
     return this.http.get<any>(this.selfAssessmentURL);
   }
 
-  getASelfAssessments(assessmentId: number) {
+  getASelfAssessments(assessmentId:string) {
     return this.http.get<any>(this.selfAssessmentURL + "/" + assessmentId);
   }
 }
