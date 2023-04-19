@@ -11,6 +11,7 @@ export class ApiService {
   private baseUrl = environment.apiUrl;
   private employeeURL = this.baseUrl + "/employees";
   private selfAssessmentURL = this.baseUrl + "/self-assessment";
+  private performanceEvalURL = this.baseUrl + "/manager-assessment";
 
 
 //this constructor is to call the httpClient
@@ -27,4 +28,13 @@ export class ApiService {
   getASelfAssessments(assessmentId:string) {
     return this.http.get<any>(this.selfAssessmentURL + "/" + assessmentId);
   }
+
+  //created function for performance evaluation
+
+  getPerformanceEval(performanceId:string){
+    return this.http.get<any>(this.performanceEvalURL + "/" + performanceId);
+
+  }
+
+
 }
