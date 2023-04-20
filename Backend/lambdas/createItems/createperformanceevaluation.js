@@ -30,7 +30,7 @@ exports.createPerformanceEvaluation = async (event, context, callback) => {
     let dt = y + '/' + MM + '/' + dd;
 
     const params = {
-        TableName: process.env.PERFORMANCE_EVAL_TABLE,
+        TableName: process.env.MANAGER_ASSESSMENTS_TABLE,
         Item: {
             id: isPostmanMode ? generateTestID(postmanID).toString() : uuid.v1(),
             employeeId: data.employeeId,
