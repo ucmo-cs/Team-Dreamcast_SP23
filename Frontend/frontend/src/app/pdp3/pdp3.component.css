@@ -3,9 +3,15 @@ h2 {
     text-align: center;
 }
 
-.left-align-label {
+p {
     position: absolute;
-    left: 20px;
+    left: 95px;
+}
+
+
+.year-alignment {
+    position: absolute;
+    left: 95px;
 }
 
 .view-year-label {
@@ -36,11 +42,5 @@ h2 {
 .grid-text-large-label {
     position: absolute;
     font-weight: bold;
-    left: 95px;
-
-}
-
-.grid-text {
-    position: absolute;
     left: 95px;
 }
