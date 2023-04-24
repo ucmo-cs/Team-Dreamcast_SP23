@@ -5,8 +5,8 @@
     <label style="margin: 0;">View Year</label><br>
     <mat-form-field appearance="outline" class="md-field">
       <mat-label>Year</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let year of years" [value]="year.value">
+      <mat-select (selectionChange)="getASelfAssessment('72858bf0-df17-11ed-828b-ed6fee87d3fd', $event.value.toString())">
+        <mat-option *ngFor="let year of years" [value]="year.viewValue">
           {{year.viewValue}}
         </mat-option>
       </mat-select>
@@ -15,8 +15,8 @@
   </mat-grid-tile>
   <mat-grid-tile colspan="2"></mat-grid-tile>
   <mat-grid-tile>
-    <button mat-flat-button class="button-white" (click)="getEmployees()">Delete</button>
-    <button mat-flat-button class="button-yellow" (click)="getASelfAssessment('72858bf0-df17-11ed-828b-ed6fee87d3fd', '2019')">Add New</button> 
+    <button mat-flat-button class="button-white">Delete</button>
+    <button mat-flat-button class="button-yellow">Add New</button> 
   </mat-grid-tile>
 </mat-grid-list>
 
@@ -25,7 +25,7 @@
     <div class="label-align-left">
       <label for="name" style="margin: 5px;">Employee Name</label><br>
       <mat-form-field appearance="outline">
-        <input matInput>
+        <input matInput value={{employeeName}}>
       </mat-form-field>
     </div>
   </mat-grid-tile>
@@ -36,7 +36,7 @@
         <input matInput [matDatepicker]="picker1">
         <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
         <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
+        <mat-datepicker #picker1>{{completedDate}}</mat-datepicker>
       </mat-form-field>
     </div>
   </mat-grid-tile>
