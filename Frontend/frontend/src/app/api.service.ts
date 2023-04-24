@@ -27,4 +27,11 @@ export class ApiService {
   getASelfAssessment(employeeId:string, assessmentYear:string) {
     return this.http.get<any>(this.selfAssessmentURL + "/" + employeeId + "/" + assessmentYear);
   }
+
+  deleteSelfAssessment(selfAssessmentId:string) {
+    return this.http.delete<any>(this.selfAssessmentURL + "/" + selfAssessmentId);
+  }
+
+  globalUser = 'First McLast';
+  globalUserId = '72858bf0-df17-11ed-828b-ed6fee87d3fd';
 }

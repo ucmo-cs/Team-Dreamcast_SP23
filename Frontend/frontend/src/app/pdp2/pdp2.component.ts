@@ -21,36 +21,76 @@ export interface Tile {
 export class PDP2Component {
   constructor(private api: ApiService) { }
 
-  getEmployees() {
-    this.api.getEmployees().subscribe((res: any) => {
-      console.log(res);
-    });
+  bigChungus(value: number) {
+    console.log(value);
+  }
+
+  setDefaultInputs() {
+    this.employeeName = this.api.globalUser;
+    this.completedDate = new Date();
+
+    this.accomplishment1 = 'Accomplishment text goes here.';
+    this.accomplishment2 = 'Accomplishment text goes here.';
+    this.accomplishment3 = 'Accomplishment text goes here.';
+    this.takeaways = "Answer goes here.";
+    this.obstaclesOvercame = "Answer goes here.";
+    this.improvementAreas = "Answer goes here.";
+    this.supportImprovement = "Answer goes here.";
+    this.milestones = "Answer goes here.";
+    this.hurdles = "Answer goes here.";
+    this.holdAccountable = "Answer goes here.";
+    this.posotivePerformanceExample = "Answer goes here.";
+    this.improveExample = "Answer goes here.";
+    this.mainGoal = "Answer goes here.";
+    this.learningGoal = "Answer goes here.";
+    this.leadershipTeam = "Answer goes here.";
+    this.feedback = "Answer goes here.";
   }
 
   getASelfAssessment(employeeId: string, assessmentYear: string) {
     this.api.getASelfAssessment(employeeId, assessmentYear).subscribe((res: any) => {
-      console.log(res);
-      this.accomplishment1 = res[0].accomplishments[0];
-      this.accomplishment2 = res[0].accomplishments[1];
-      this.accomplishment3 = res[0].accomplishments[2];
-      this.takeaways = res[0].takeaways;
-      this.obstaclesOvercame = res[0].obstaclesOvercame;
-      this.improvementAreas = res[0].improvementAreas;
-      this.supportImprovement = res[0].supportImprovement;
-      this.milestones = res[0].milestones;
-      this.hurdles = res[0].hurdles;
-      this.holdAccountable = res[0].holdAccountable;
-      this.posotivePerformanceExample = res[0].posotivePerformanceExample;
-      this.improveExample = res[0].improveExample;
-      this.mainGoal = res[0].mainGoal;
-      this.learningGoal = res[0].learningGoal;
-      this.leadershipTeam = res[0].leadershipTeam;
-      this.feedback = res[0].feedback;
+      if (res.length != 0) {
+        this.currentSelfAssessmentId = res[0].id;
+        this.employeeName = res[0].employeeName;
+        this.accomplishment1 = res[0].accomplishments[0];
+        this.accomplishment2 = res[0].accomplishments[1];
+        this.accomplishment3 = res[0].accomplishments[2];
+        this.takeaways = res[0].takeaways;
+        this.obstaclesOvercame = res[0].obstaclesOvercame;
+        this.improvementAreas = res[0].improvementAreas;
+        this.supportImprovement = res[0].supportImprovement;
+        this.milestones = res[0].milestones;
+        this.hurdles = res[0].hurdles;
+        this.holdAccountable = res[0].holdAccountable;
+        this.posotivePerformanceExample = res[0].posotivePerformanceExample;
+        this.improveExample = res[0].improveExample;
+        this.mainGoal = res[0].mainGoal;
+        this.learningGoal = res[0].learningGoal;
+        this.leadershipTeam = res[0].leadershipTeam;
+        this.feedback = res[0].feedback;
+        this.completedDate = new Date(res[0].updatedDate);
+      }
+      else { this.setDefaultInputs(); }
+    })
+  }
+
+  deleteSelfAssessment(id: string) {
+    // can do some magic with the completed date once I figure it out.
+    this.api.deleteSelfAssessment(id).subscribe((res: any) => {
+      alert(res);
+      this.setDefaultInputs();
     })
   }
 
   title = 'Risen One Company Portal';
 
+  // need to get this working on front end selection. Will be equal to the updated date.
+  completedDate = new Date();
+
+  // front end team decided not to do any routing so we stuck with this jank.
+  currentSelfAssessmentId = "";
+
+  employeeName = this.api.globalUser;
   accomplishment1 = 'Accomplishment text goes here.';
   accomplishment2 = 'Accomplishment text goes here.';
   accomplishment3 = 'Accomplishment text goes here.';
@@ -85,8 +125,9 @@ export class PDP2Component {
   ];
 
   years: Year[] = [
-    { value: 'year-0', viewValue: '2023' },
-    { value: 'year-1', viewValue: '2022' },
-    { value: 'year-2', viewValue: '2021' },
+    { value: '2023', viewValue: '2023' },
+    { value: '2022', viewValue: '2022' },
+    { value: '2021', viewValue: '2021' },
+    { value: '2020', viewValue: '2020' }
   ];
 }
