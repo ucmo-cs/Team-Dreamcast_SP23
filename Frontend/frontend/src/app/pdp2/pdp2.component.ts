@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../api.service';
+import { FormControl } from '@angular/forms';
 
 
 interface Year {
@@ -27,7 +28,7 @@ export class PDP2Component {
 
   setDefaultInputs() {
     this.employeeName = this.api.globalUser;
-    this.completedDate = new Date();
+    this.completedDate = new FormControl(new Date());
 
     this.accomplishment1 = 'Accomplishment text goes here.';
     this.accomplishment2 = 'Accomplishment text goes here.';
@@ -68,15 +69,15 @@ export class PDP2Component {
         this.learningGoal = res[0].learningGoal;
         this.leadershipTeam = res[0].leadershipTeam;
         this.feedback = res[0].feedback;
-        this.completedDate = new Date(res[0].updatedDate);
+        this.completedDate = new FormControl(new Date(res[0].updatedDate));
       }
       else { this.setDefaultInputs(); }
     })
   }
 
-  deleteSelfAssessment(id: string) {
+  deleteSelfAssessment() {
     // can do some magic with the completed date once I figure it out.
-    this.api.deleteSelfAssessment(id).subscribe((res: any) => {
+    this.api.deleteSelfAssessment(this.currentSelfAssessmentId).subscribe((res: any) => {
       alert(res);
       this.setDefaultInputs();
     })
@@ -85,7 +86,7 @@ export class PDP2Component {
   title = 'Risen One Company Portal';
 
   // need to get this working on front end selection. Will be equal to the updated date.
-  completedDate = new Date();
+  completedDate = new FormControl(new Date());
 
   // front end team decided not to do any routing so we stuck with this jank.
   currentSelfAssessmentId = "";

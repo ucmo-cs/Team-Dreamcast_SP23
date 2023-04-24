@@ -15,7 +15,7 @@
   </mat-grid-tile>
   <mat-grid-tile colspan="2"></mat-grid-tile>
   <mat-grid-tile>
-    <button mat-flat-button class="button-white" (click)="deleteSelfAssessment('c3080590-e24f-11ed-b696-6bf2653a4e1b')">Delete</button>
+    <button mat-flat-button class="button-white" (click)="deleteSelfAssessment()">Delete</button>
     <button mat-flat-button class="button-yellow">Add New</button> 
   </mat-grid-tile>
 </mat-grid-list>
@@ -33,10 +33,10 @@
     <div class="label-align-left">
       <label for="complete" style="margin: 5px;">Date Completed</label><br>
       <mat-form-field appearance="outline" class="name-textbox">
-        <input matInput [matDatepicker]="picker1">
+        <input matInput [matDatepicker]="picker1" [formControl]="completedDate">
         <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
         <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1>{{completedDate}}</mat-datepicker>
+        <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field>
     </div>
   </mat-grid-tile>
