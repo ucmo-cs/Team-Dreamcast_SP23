@@ -70,15 +70,15 @@ export class PDP3Component {
     this.EmployeeName = this.api.globalUser;
     this.DateCompleted = new Date ();
 
-    this.EmployeeName = 'tu torial';
-    this.SupervisorName = ' uc mo';
+    this.EmployeeName = 'Last Mcfirst';
+    this.SupervisorName = 'Last First';
     this.Rating1 = '11/10';
     this.Rating2 = '20/10';
     this.Rating3 = '19.5/10';
     this.Rating4 = '0/10';
     this.Rating5 = '0.0/10';
     this.Feedback1 = 'is awesome';
-    this.Feedback2 = 'swag';
+    this.Feedback2 = 'is swag';
     this.Feedback3 = 'swag awesome';
     this.Feedback4 = 'no.';
     this.Feedback5 = 'not good bro';
