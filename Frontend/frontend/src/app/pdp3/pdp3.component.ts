@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
+//import html2canvas from 'html2canvas';
 import { ApiService } from '../api.service';
 // import { FormControl } from '@angular/forms'; //don't need
-//import * as jspdf from 'jspdf'; //for getting to pdf but 
-//import html2canvas from 'html2canvas'; //don't think i can get it done
+//import * as jspdf from 'jspdf'; //for getting to pdf 
 
 //add and take away when needed/not needed
 interface Year {
@@ -24,8 +24,26 @@ export interface Tile{
   styleUrls: ['./pdp3.component.css']
 })
 export class PDP3Component {
-  //download pdf
+  //download pdf //currently non-functional
+  /*
+  public captureScreen()  
+  {  
+    var data = document.getElementById('contentToConvert');  //Id of the table
+    html2canvas(data).then(canvas => {  
+      // Few necessary setting options  
+      let imgWidth = 208;   
+      let pageHeight = 295;    
+      let imgHeight = canvas.height * imgWidth / canvas.width;  
+      let heightLeft = imgHeight;  
 
+      const contentDataURL = canvas.toDataURL('image/png')  
+      let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
+      let position = 0;  
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
+      pdf.save('MYPdf.pdf'); // Generated PDF   
+    });  
+  }  
+  */
   constructor(private api: ApiService){}
   DateCompleted = new Date();
   currentPerformanceEvalId = "";
