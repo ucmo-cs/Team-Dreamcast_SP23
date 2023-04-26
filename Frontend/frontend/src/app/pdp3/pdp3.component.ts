@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../api.service';
-import { FormControl } from '@angular/forms';
+// import { FormControl } from '@angular/forms'; //don't need
 
 //add and take away when needed/not needed
 interface Year {
@@ -48,18 +48,18 @@ export class PDP3Component {
     this.EmployeeName = this.api.globalUser;
     this.DateCompleted = new Date ();
 
-    this.EmployeeName = 'default';
-    this.SupervisorName = 'default';
+    this.EmployeeName = 'tu torial';
+    this.SupervisorName = ' uc mo';
     this.Rating1 = '11/10';
     this.Rating2 = '20/10';
     this.Rating3 = '19.5/10';
     this.Rating4 = '0/10';
     this.Rating5 = '0.0/10';
-    this.Feedback1 = 'default';
-    this.Feedback2 = 'default';
-    this.Feedback3 = 'default';
-    this.Feedback4 = 'default';
-    this.Feedback5 = 'default';
+    this.Feedback1 = 'is awesome';
+    this.Feedback2 = 'swag';
+    this.Feedback3 = 'swag awesome';
+    this.Feedback4 = 'no.';
+    this.Feedback5 = 'not good bro';
 
   }
 
