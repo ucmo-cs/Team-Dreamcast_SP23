@@ -4,9 +4,10 @@
 const AWS = require('aws-sdk');
 const dynamoDb = new AWS.DynamoDB.DocumentClient({endpoint: 'http://localhost:8000'});
 const uuid = require('uuid');
+const performanceEvaluationTable = process.env.MANAGER_ASSESSMENTS_TABLE;
 
-let isPostmanMode = false;
-let postmanID = 0;
+let isPostmanMode = false; //remove later
+let postmanID = 0; //remove later
 
 exports.createPerformanceEvaluation = async (event, context, callback) => {
     let headers = {
@@ -18,6 +19,7 @@ exports.createPerformanceEvaluation = async (event, context, callback) => {
     const data = JSON.parse(event.body);
     console.log("EVENT:::", data);
 
+    
     //create new timestamp value
     let d = new Date();
     let h = addZero(d.getHours());
@@ -34,12 +36,24 @@ exports.createPerformanceEvaluation = async (event, context, callback) => {
         Item: {
             id: isPostmanMode ? generateTestID(postmanID).toString() : uuid.v1(),
             employeeId: data.employeeId,
-            employeeName: data.employeeName,
-            goals: data.goals,
-            createdDate: dt,
-            createdTimestamp: ts,
-            updatedDate: dt,
-            updatedTimestamp: ts
+            supervisorName: data.supervisorName,
+            dateComplete: data.dateComplete, //might change to dt (maybe??)
+            //communication section
+            rating1: data.rating1,
+            feedback1: data.feedback1,
+            //collaboration and teamwork section
+            rating2: data.rating2,
+            feedback2: data.feedback2,
+            //quality and accuracy of work section
+            rating3: data.rating3,
+            feedback3: data.feedback3,
+            //attendance, punctuality and reliability section
+            rating4: data.rating4,
+            feedback4: data.feedback4,
+            //goal accomplishments and deadline timelines
+            rating5: data.rating5,
+            feedback5: data.rating5
+
         }
     }
 

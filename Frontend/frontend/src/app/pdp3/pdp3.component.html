@@ -1,25 +1,29 @@
-<h2>Performance Evaluation</h2>
-<mat-grid-list cols="6" rowHeight="100px">
-    <mat-grid-tile colspan="2">
-        <div class="label-align-left">
-            <label class="view-year-label">View Year</label>
-            <br>
-            <mat-form-field class="select-year" appearance="outline">
-                <mat-select placeholder="Year">
-                    <mat-option value="2022">2022</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-    </mat-grid-tile>
-    <mat-grid-tile colspan="3"></mat-grid-tile>
+<h2 class="title" style="text-align: center">Performance Evaluation</h2>
+<link rel="stylesheet" href="pdp3.component.css">
+<mat-grid-list cols="4" rowHeight="100px">
     <mat-grid-tile>
-        <button mat-flat-button class="button-yellow"(click)="getPerformanceEval('166438c0-df09-11ed-8108-81d7e73056af')">Add New</button> 
-        <button mat-stroked-button class="export">Export to PDF</button>
+      <div class="label-align-left">
+      <label style="margin: 0;">View Year</label><br>
+      <mat-form-field appearance="outline" class="md-field">
+        <mat-label>Year</mat-label>
+        <!--<mat-select (selectionChange)="getPerformanceEval('72858bf0-df17-11ed-828b-ed6fee87d3fd')"></mat-select>-->
+        <mat-select>
+          <mat-option *ngFor="let year of years" [value]="year.value">
+            {{year.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2"></mat-grid-tile>
+<mat-grid-tile>
+        <button mat-flat-button class="button-yellow"(click)="getPerformanceEval('72858bf0-df17-11ed-828b-ed6fee87d3fd')">Add New</button>
+        <button mat-flat-button class="button-white"(click)="deletePerformanceEval('72858bf0-df17-11ed-828b-ed6fee87d3fd')">Delete</button>
     </mat-grid-tile>
 </mat-grid-list>
 <br>
 <br>
-<mat-grid-list cols="6" rowHeight="20px">
+<mat-grid-list cols="6" rowHeight="85px" rowWidth="85px">
     <mat-grid-tile>
         <label class="grid-text-small-label">Employee Name</label>
     </mat-grid-tile>
@@ -31,13 +35,13 @@
     </mat-grid-tile>
     <mat-grid-tile colspan="3"></mat-grid-tile>
     <mat-grid-tile>
-        <div class="grid-text">John Doe</div>
+        <div class="grid-text">{{EmployeeName}}</div>
     </mat-grid-tile>
     <mat-grid-tile>
-        <div class="grid-text">James Smith</div>
+        <div class="grid-text">{{SupervisorName}}</div>
     </mat-grid-tile>
     <mat-grid-tile>
-        <div class="grid-text">9/15/22</div>
+        <div class="grid-text">{{DateCompleted}}</div>
     </mat-grid-tile>
 </mat-grid-list>
 <br>
@@ -69,16 +73,16 @@
 
 <mat-grid-list class="grid" cols="6" rows="2" rowHeight="40px">
     <mat-grid-tile>
-        <div class="grid-text">Outstanding</div>
+        <div class="grid-text">{{Rating1}}</div>
     </mat-grid-tile>
     <mat-grid-tile colspan="2">
-        <div class="grid-text">Supervisor feedback goes here.</div>
+        <div class="grid-text">{{Feedback1}}</div>
     </mat-grid-tile>
     <mat-grid-tile>
-        <div class="grid-text">Outstanding</div>
+        <div class="grid-text">{{Rating2}}</div>
     </mat-grid-tile>
     <mat-grid-tile colspan="2">
-        <div class="grid-text">Supervisor feedback goes here.</div>
+        <div class="grid-text">{{Feedback2}}</div>
     </mat-grid-tile>
 </mat-grid-list>
 <br>
@@ -110,20 +114,18 @@
 
 <mat-grid-list cols="6" rows="2" rowHeight="40px">
     <mat-grid-tile>
-        <div class="grid-text">Outstanding</div>
+        <div class="grid-text">{{Rating3}}</div>
     </mat-grid-tile>
     <mat-grid-tile colspan="2">
-        <div class="grid-text">Supervisor feedback goes here.</div>
+        <div class="grid-text">{{Feedback3}}</div>
     </mat-grid-tile>
     <mat-grid-tile>
-        <div class="grid-text">Outstanding</div>
+        <div class="grid-text">{{Rating4}}</div>
     </mat-grid-tile>
     <mat-grid-tile colspan="2">
-        <div class="grid-text">Supervisor feedback goes here.</div>
+        <div class="grid-text">{{Feedback4}}</div>
     </mat-grid-tile>
 </mat-grid-list>
-<br>
-<br>
 <br>
 <mat-grid-list cols="2" rows="1" rowHeight="20px">
     <mat-grid-tile>
@@ -139,17 +141,31 @@
     <mat-grid-tile colspan="2">
         <div class="grid-text-small-label">Feedback</div>
     </mat-grid-tile>
+</mat-grid-list>
+<!--
+<mat-grid-list cols="6" rows="2" rowHeight="20px">
+    <mat-grid-tile>
+        <div class="grid-text-small-label">{{Rating5}}</div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2">
+        <div class="grid-text-small-label">{{Feedback5}}</div>
+    </mat-grid-tile>
     <mat-grid-tile colspan="3"></mat-grid-tile>
 </mat-grid-list>
+-->
 
 <mat-grid-list cols="6" rows="2" rowHeight="40px">
     <mat-grid-tile>
-        <div class="grid-text">Outstanding</div>
+        <div class="grid-text">{{Rating5}}</div>
     </mat-grid-tile>
     <mat-grid-tile colspan="2">
-        <div class="grid-text">Supervisor feedback goes here.</div>
+        <div class="grid-text">{{Feedback5}}</div>
     </mat-grid-tile>
     <mat-grid-tile colspan="3"></mat-grid-tile>
 </mat-grid-list>
-<br>
-<br>
+<mat-grid-list cols="4" row-height="100px">
+    <mat-grid-tile colspan="3"></mat-grid-tile>
+    <mat-grid-tile>
+        <button mat-stroked-button class="export">Export to PDF</button>
+    </mat-grid-tile>
+</mat-grid-list>

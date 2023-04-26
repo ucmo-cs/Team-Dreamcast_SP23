@@ -31,10 +31,41 @@ export class ApiService {
 
   //created function for performance evaluation
 
-  getPerformanceEval(performanceId:string){
-    return this.http.get<any>(this.performanceEvalURL + "/" + performanceId);
+  getPerformanceEval(employeeId:string){
+    return this.http.get<any>(this.performanceEvalURL + "/" + employeeId);
 
   }
 
+  deletePerformanceEval(performanceId:string){
+    return this.http.delete<any>(this.performanceEvalURL + "/" + performanceId);
+
+  }
+  //ask about global users
+  globalUser = 'First McLast';
+  globalUserId = '72858bf0-df17-11ed-828b-ed6fee87d3fd'
+
+  globalUser2 = 'Girly Teengirl';
+  globalUserId2 = '72858bf0-df17-11ed-828b-ed6fee87c4dd'
+
+  //hardcode this shit in I guess
+  //Section Communucation
+  rating1 = "5/10";
+  feedback1 = "bad";
+
+  //section collab and teamwork
+  rating2 = "5/10";
+  feedback2 = "even more bad";
+
+  //section quality and accuracy of work
+  rating3 = "6/10";
+  feedback3 = "just a smidge better";
+
+  //section attendance punctuality and reliability
+  rating4 = "7/10";
+  feedback4 = "getting warmer...";
+
+  //section goal accomplishment and deadline timeline
+  rating  = "10/10";
+  feedback5 = "hot as lava!!!! :volcano emoji:";
 
 }
