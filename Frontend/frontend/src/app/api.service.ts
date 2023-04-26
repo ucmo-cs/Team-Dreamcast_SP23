@@ -11,6 +11,7 @@ export class ApiService {
   private baseUrl = environment.apiUrl;
   private employeeURL = this.baseUrl + "/employees";
   private selfAssessmentURL = this.baseUrl + "/self-assessment";
+  private personalDevelopmentPlanURL = this.baseUrl + "/personal-development-plan";
 
 
 //this constructor is to call the httpClient
@@ -30,6 +31,18 @@ export class ApiService {
 
   deleteSelfAssessment(selfAssessmentId:string) {
     return this.http.delete<any>(this.selfAssessmentURL + "/" + selfAssessmentId);
+  }
+
+  getAllPersonalDevelopmentPlan() {
+    return this.http.get<any>(this.personalDevelopmentPlanURL);
+  }
+
+  getAPersonalDevelopmentPlan(employeeId:string, assessmentYear:string) {
+    return this.http.get<any>(this.personalDevelopmentPlanURL + "/" + employeeId + "/" + assessmentYear);
+  }
+
+  deletePersonalDevelopmentPlan(personalDevPLanId:string) {
+    return this.http.delete<any>(this.personalDevelopmentPlanURL + "/" + personalDevPLanId);
   }
 
   globalUser = 'First McLast';

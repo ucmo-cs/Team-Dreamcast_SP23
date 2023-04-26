@@ -16,7 +16,7 @@
     <mat-grid-tile colspan="5">
         <div style="margin-left: auto;">
             <label for="add-new-button"></label>
-            <a mat-flat-button class="button4 first-button">Delete</a>
+            <a mat-flat-button class="button4 first-button" (click)="deletePersonalDevelopmentPlan()">Delete</a>
             <a mat-flat-button class="button4 second-button">Add New</a>
         </div>
     </mat-grid-tile>
@@ -27,7 +27,7 @@
         <div class="label-align-left">
             <label>Employee Name</label>
             <mat-form-field appearance="outline">
-                <input matInput placeholder="John Doe">
+                <input matInput placeholder="John Doe" value={{filerName}}>
             </mat-form-field>
         </div>
     </mat-grid-tile>
@@ -35,7 +35,7 @@
         <div>
             <label>Date Completed</label>
             <mat-form-field appearance="outline" style="width: 75%;">
-                <input matInput [matDatepicker]="picker1" placeholder="Choose a date">
+                <input matInput [matDatepicker]="picker1" placeholder="Choose a date" vaule={{dateCompleted}}>
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>
@@ -45,7 +45,7 @@
             <label>6-Month Check-In</label>
             <mat-form-field appearance="outline" style="width: 75%;">
                 <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="picker2">
+                <input matInput [matDatepicker]="picker2" value={{sixMonthCheck}}>
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
                 <mat-datepicker #picker2></mat-datepicker>
@@ -59,7 +59,7 @@
         <div class="fill-div">
             <label>Short-Term Goals</label>
             <mat-form-field class="fill-space">
-                <textarea matInput class="fix-textarea" placeholder="Goal text goes here."></textarea>
+                <textarea matInput class="fix-textarea" placeholder="Goal text goes here.">{{shortTermGoals}}</textarea>
             </mat-form-field>
         </div>
     </mat-grid-tile>
@@ -67,7 +67,7 @@
         <div class="fill-div">
             <label>Mid-Term Goals (2-3 Years)</label>
             <mat-form-field class="fill-space">
-                <textarea matInput class="fix-textarea" placeholder="Goal text goes here."></textarea>
+                <textarea matInput class="fix-textarea" placeholder="Goal text goes here.">{{midTermGoals}}</textarea>
             </mat-form-field>
         </div>
     </mat-grid-tile>
@@ -75,7 +75,7 @@
         <div class="fill-div">
             <label>Long-Term Goals (5 Years)</label>
             <mat-form-field class="fill-space">
-                <textarea matInput class="fix-textarea" placeholder="Goal text goes here."></textarea>
+                <textarea matInput class="fix-textarea" placeholder="Goal text goes here.">{{longTermGoals}}</textarea>
             </mat-form-field>
         </div>
     </mat-grid-tile>
@@ -86,7 +86,7 @@
         <div class="fill-div">
             <label>Development Needs</label>
             <mat-form-field class="fill-space">
-                <textarea matInput class="fix-textarea" placeholder="Development needs text goes here."></textarea>
+                <textarea matInput class="fix-textarea" placeholder="Development needs text goes here.">{{developmentNeeds}}</textarea>
             </mat-form-field>
         </div>
     </mat-grid-tile>
@@ -94,30 +94,11 @@
         <div class="fill-div">
             <label>Action Plan</label>
             <mat-form-field class="fill-space">
-                <textarea matInput class="fix-textarea" placeholder="Development needs text goes here."></textarea>
+                <textarea matInput class="fix-textarea" placeholder="Action plan text goes here.">{{actionPlan}}</textarea>
             </mat-form-field>
         </div>
     </mat-grid-tile>
 </mat-grid-list>
-<!-- <mat-grid-list cols="6" rowHeight="200px" [gutterSize]="'20'">
-    <mat-grid-tile [colspan]="3" [rowspan]="1">
-        <div class="fill-div" style="margin-bottom: auto;">
-            <label>Development Needs</label>
-            <mat-form-field class="fill-space" style="max-height: 200px;">
-                <textarea matInput class="fix-textarea" placeholder="Development needs text goes here."></textarea>
-            </mat-form-field>
-        </div>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="3" [rowspan]="1">
-        <div class="fill-div" style="margin-bottom: auto;">
-            <label>Action Plan</label>
-            <mat-form-field appearance="fill" class="fill-space">
-                <textarea matInput class="fix-textarea" placeholder="Action plan text goes here."></textarea>
-            </mat-form-field>
-        </div>
-    </mat-grid-tile>
-</mat-grid-list> -->
-
 <mat-grid-list cols="4" rowHeight="100px" >
     <mat-grid-tile [colspan]="1" [rowspan]="1">
         <div class="fill-div">
@@ -131,7 +112,7 @@
         <div>
             <label>Date Signed</label>
             <mat-form-field appearance="outline" style="width: 75%;">
-                <input matInput [matDatepicker]="picker3">
+                <input matInput [matDatepicker]="picker3" vaule={{dateCompleted}}>
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
                 <mat-datepicker #picker3></mat-datepicker>
@@ -150,7 +131,7 @@
         <div>
             <label>Date Signed</label>
             <mat-form-field appearance="outline" style="width: 75%;">
-                <input matInput [matDatepicker]="picker4">
+                <input matInput [matDatepicker]="picker4" vaule={{dateCompleted}}>
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker4"></mat-datepicker-toggle>
                 <mat-datepicker #picker4></mat-datepicker>
@@ -160,7 +141,7 @@
 </mat-grid-list>
 
 <mat-grid-list cols="6" rowHeight="100px" >
-    <mat-grid-tile [colspan]="6" [rowspan]="1" [ngStyle]="">
+    <mat-grid-tile [colspan]="6" [rowspan]="1">
         <div style="margin-left: auto;">
             <label for="export-to-pdf-button"></label>
             <a mat-flat-button class="button4 first-button">Export to PDF</a>
