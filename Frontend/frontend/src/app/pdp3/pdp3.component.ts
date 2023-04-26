@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../api.service';
 // import { FormControl } from '@angular/forms'; //don't need
+//import * as jspdf from 'jspdf'; //for getting to pdf but 
+//import html2canvas from 'html2canvas'; //don't think i can get it done
 
 //add and take away when needed/not needed
 interface Year {
@@ -22,6 +24,8 @@ export interface Tile{
   styleUrls: ['./pdp3.component.css']
 })
 export class PDP3Component {
+  //download pdf
+
   constructor(private api: ApiService){}
   DateCompleted = new Date();
   currentPerformanceEvalId = "";
