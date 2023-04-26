@@ -80,6 +80,15 @@ functions:
       SELF_ASSESSMENT_TABLE: ${self:custom.selfAssesmentTableName}
       # add any other table names below here
 
+  getSelfAssessmentYears:
+    handler: lambdas/getSelfAssessmentYears.getSelfAssessmentYears
+    events:
+      - httpApi:
+          path: /{model}/{employeeId}/years
+          method: get
+    environment:
+      SELF_ASSESSMENT_TABLE: ${self:custom.selfAssesmentTableName}
+      # add any other table names below here
 
   updateItem:
     handler: lambdas/updateItem.updateItem

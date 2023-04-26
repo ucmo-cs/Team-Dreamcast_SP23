@@ -28,8 +28,20 @@ export class ApiService {
     return this.http.get<any>(this.selfAssessmentURL + "/" + employeeId + "/" + assessmentYear);
   }
 
+  getSelfAssessmentYears(employeeId:string) {
+    return this.http.get<any>(this.selfAssessmentURL + "/" + employeeId + "/years");
+  }
+
   deleteSelfAssessment(selfAssessmentId:string) {
     return this.http.delete<any>(this.selfAssessmentURL + "/" + selfAssessmentId);
+  }
+
+  saveSelfAssessment(assessment:any) {
+    return this.http.post<any>(this.selfAssessmentURL, assessment);
+  }
+
+  updateSelfAssessment(assessment:any, assesmentId:string) {
+    return this.http.patch<any>(this.selfAssessmentURL + '/' + assesmentId, assessment);
   }
 
   globalUser = 'First McLast';

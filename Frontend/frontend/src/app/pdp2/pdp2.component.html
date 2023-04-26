@@ -2,21 +2,21 @@
 <mat-grid-list cols="4" rowHeight="100px">
   <mat-grid-tile>
     <div class="label-align-left">
-    <label style="margin: 0;">View Year</label><br>
-    <mat-form-field appearance="outline" class="md-field">
-      <mat-label>Year</mat-label>
-      <mat-select (selectionChange)="getASelfAssessment('72858bf0-df17-11ed-828b-ed6fee87d3fd', $event.value.toString())">
-        <mat-option *ngFor="let year of years" [value]="year.viewValue">
-          {{year.viewValue}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+      <label style="margin: 0;">View Year</label><br>
+      <mat-form-field appearance="outline" class="md-field">
+        <mat-label>Year</mat-label>
+        <mat-select [(ngModel)]="selectedYear" (selectionChange)="getASelfAssessment($event.value.toString())">
+          <mat-option *ngFor="let year of years" [value]="year.viewValue">
+            {{year.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
   </mat-grid-tile>
   <mat-grid-tile colspan="2"></mat-grid-tile>
   <mat-grid-tile>
     <button mat-flat-button class="button-white" (click)="deleteSelfAssessment()">Delete</button>
-    <button mat-flat-button class="button-yellow">Add New</button> 
+    <button mat-flat-button class="button-yellow" (click)="setDefaultInputs()">Add New</button>
   </mat-grid-tile>
 </mat-grid-list>
 
@@ -25,7 +25,7 @@
     <div class="label-align-left">
       <label for="name" style="margin: 5px;">Employee Name</label><br>
       <mat-form-field appearance="outline">
-        <input matInput value={{employeeName}}>
+        <input matInput [(ngModel)]="employeeName">
       </mat-form-field>
     </div>
   </mat-grid-tile>
@@ -48,18 +48,18 @@
   </mat-grid-tile>
   <mat-grid-tile rowspan="3">
     <mat-form-field appearance="outline" class="textbox-skinny">
-      <textarea matInput>{{accomplishment1}}</textarea>
+      <textarea matInput [(ngModel)]="accomplishment1"></textarea>
     </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile rowspan="3">
     <mat-form-field appearance="outline" class="textbox-skinny">
-      <textarea matInput>{{accomplishment2}}</textarea>
-    </mat-form-field>    
+      <textarea matInput [(ngModel)]="accomplishment2"></textarea>
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile rowspan="3">
     <mat-form-field appearance="outline" class="textbox-skinny">
-      <textarea matInput>{{accomplishment3}}</textarea>
-    </mat-form-field>    
+      <textarea matInput [(ngModel)]="accomplishment3"></textarea>
+    </mat-form-field>
   </mat-grid-tile>
 </mat-grid-list>
 
@@ -72,13 +72,13 @@
   </mat-grid-tile>
   <mat-grid-tile rowspan="5">
     <mat-form-field appearance="outline" class="textbox-tall">
-      <textarea matInput>{{takeaways}}</textarea>
-    </mat-form-field>    
+      <textarea matInput [(ngModel)]="takeaways"></textarea>
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile rowspan="5">
     <mat-form-field appearance="outline" class="textbox-tall">
-      <textarea matInput>{{obstaclesOvercame}}</textarea>
-    </mat-form-field>    
+      <textarea matInput [(ngModel)]="obstaclesOvercame"></textarea>
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile>
     <label for="improve">In what ways do you think you can improve your performance?</label>
@@ -88,53 +88,54 @@
   </mat-grid-tile>
   <mat-grid-tile rowspan="5">
     <mat-form-field appearance="outline" class="textbox-tall">
-      <textarea matInput>{{improvementAreas}}</textarea>
-    </mat-form-field>    
+      <textarea matInput [(ngModel)]="improvementAreas"></textarea>
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile rowspan="5">
     <mat-form-field appearance="outline" class="textbox-tall">
-      <textarea matInput>{{supportImprovement}}</textarea>
-    </mat-form-field>    
+      <textarea matInput [(ngModel)]="supportImprovement"></textarea>
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile>
     <label for="barriers">What barriers or hurdles exist to improving your experience?</label>
-</mat-grid-tile>
+  </mat-grid-tile>
   <mat-grid-tile>
     <label for="metrics">What metrics/milestones can we use to make sure you're on track?</label><br>
   </mat-grid-tile>
   <mat-grid-tile rowspan="5">
     <mat-form-field appearance="outline" class="textbox-tall">
-      <textarea matInput>{{hurdles}}</textarea>
-    </mat-form-field>    
+      <textarea matInput [(ngModel)]="hurdles"></textarea>
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile rowspan="5">
     <mat-form-field appearance="outline" class="textbox-tall">
-      <textarea matInput>{{milestones}}</textarea>
-    </mat-form-field>    
+      <textarea matInput [(ngModel)]="milestones"></textarea>
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile colspan="2">
-    <label for="accountability" style="text-align: center;">How will you hold yourself accountable for acheiving goals and results?</label>
+    <label for="accountability" style="text-align: center;">How will you hold yourself accountable for acheiving goals
+      and results?</label>
   </mat-grid-tile>
   <mat-grid-tile colspan="2" rowspan="5">
     <mat-form-field appearance="outline" class="textbox-tall" style="width:45%">
-    <textarea matInput>{{holdAccountable}}</textarea>
-    </mat-form-field>    
+      <textarea matInput [(ngModel)]="holdAccountable"></textarea>
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile>
-    <label for="positivePerformance" >Please list examples of positive performance from this year.</label>
+    <label for="positivePerformance">Please list examples of positive performance from this year.</label>
   </mat-grid-tile>
   <mat-grid-tile>
     <label for="improveExample">Please list examples where performance could have improved.</label>
   </mat-grid-tile>
   <mat-grid-tile rowspan="5">
     <mat-form-field appearance="outline" class="textbox-tall">
-      <textarea matInput>{{posotivePerformanceExample}}</textarea>
-    </mat-form-field>    
+      <textarea matInput [(ngModel)]="posotivePerformanceExample"></textarea>
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile rowspan="5">
     <mat-form-field appearance="outline" class="textbox-tall">
-      <textarea matInput>{{improveExample}}</textarea>
-    </mat-form-field>    
+      <textarea matInput [(ngModel)]="improveExample"></textarea>
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile>
     <label for="goal">What is your main goal for this year?</label>
@@ -144,13 +145,13 @@
   </mat-grid-tile>
   <mat-grid-tile rowspan="5">
     <mat-form-field appearance="outline" class="textbox-tall">
-      <textarea matInput>{{mainGoal}}</textarea>
-    </mat-form-field>    
+      <textarea matInput [(ngModel)]="mainGoal"></textarea>
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile rowspan="5">
     <mat-form-field appearance="outline" class="textbox-tall">
-      <textarea matInput>{{learningGoal}}</textarea>
-    </mat-form-field>    
+      <textarea matInput [(ngModel)]="learningGoal"></textarea>
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile>
     <label for="leadership">Are there any areas where your leadership team can improve?</label>
@@ -160,13 +161,13 @@
   </mat-grid-tile>
   <mat-grid-tile rowspan="5">
     <mat-form-field appearance="outline" class="textbox-tall">
-      <textarea matInput>{{leadershipTeam}}</textarea>
-    </mat-form-field>    
+      <textarea matInput [(ngModel)]="leadershipTeam"></textarea>
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile rowspan="5">
     <mat-form-field appearance="outline" class="textbox-tall">
-      <textarea matInput>{{feedback}}</textarea>
-    </mat-form-field>    
+      <textarea matInput [(ngModel)]="feedback"></textarea>
+    </mat-form-field>
   </mat-grid-tile>
 </mat-grid-list>
 
@@ -174,6 +175,6 @@
   <mat-grid-tile colspan="3"></mat-grid-tile>
   <mat-grid-tile>
     <button mat-flat-button class="button-white">Export to PDF</button>
-    <button mat-flat-button class="button-yellow">Save</button>
+    <button mat-flat-button class="button-yellow" (click)="saveSelfAssessment()">Save</button>
   </mat-grid-tile>
 </mat-grid-list>

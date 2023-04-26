@@ -22,8 +22,100 @@ export interface Tile {
 export class PDP2Component {
   constructor(private api: ApiService) { }
 
-  bigChungus(value: number) {
-    console.log(value);
+  getAssessmentYears() {
+    this.api.getSelfAssessmentYears(this.api.globalUserId).subscribe((res: any) => {
+      this.years = [];
+      res.sort().reverse();
+      for (let i = 0; i < res.length; i++) {
+        this.years.push({ value: res[i], viewValue: res[i] });
+      }
+    })
+  }
+
+  saveSelfAssessment() {
+    let shouldUpdate = false;
+    let compareDate = "";
+
+    if(this.completedDate.value != undefined) { compareDate = this.completedDate.value.getFullYear().toString();}
+    
+    this.years.forEach(function (value) {
+      if (value.viewValue == compareDate) {
+        shouldUpdate = true;
+      }
+    })
+
+    if(!shouldUpdate) {this.createNewAssessment();}
+    else {this.updateAssessment();}
+  }
+
+  updateAssessment() {
+    let newSelfAssessment = {
+      employeeName: this.employeeName,
+      employeeId: this.api.globalUserId,
+      accomplishments: [
+        this.accomplishment1,
+        this.accomplishment2,
+        this.accomplishment3
+      ],
+      takeaways: this.takeaways,
+      obstaclesOvercame: this.obstaclesOvercame,
+      improvementAreas: this.improvementAreas,
+      supportImprovement: this.supportImprovement,
+      milestones: this.milestones,
+      hurdles: this.hurdles,
+      holdAccountable: this.holdAccountable,
+      posotivePerformanceExample: this.posotivePerformanceExample,
+      improveExample: this.improveExample,
+      mainGoal: this.mainGoal,
+      learningGoal: this.learningGoal,
+      leadershipTeam: this.leadershipTeam,
+      feedback: this.feedback,
+      assessmentYear: this.completedDate.value?.getFullYear().toString()
+    }
+
+    this.api.updateSelfAssessment(newSelfAssessment, this.currentSelfAssessmentId).subscribe((res: any) => {});
+
+    alert("Updated Self Assessment Successfully!")
+
+    this.setDefaultInputs();
+    this.setDefaultInputs();
+  }
+
+  createNewAssessment() {
+    let newSelfAssessment = {
+      employeeName: this.employeeName,
+      employeeId: this.api.globalUserId,
+      accomplishments: [
+        this.accomplishment1,
+        this.accomplishment2,
+        this.accomplishment3
+      ],
+      takeaways: this.takeaways,
+      obstaclesOvercame: this.obstaclesOvercame,
+      improvementAreas: this.improvementAreas,
+      supportImprovement: this.supportImprovement,
+      milestones: this.milestones,
+      hurdles: this.hurdles,
+      holdAccountable: this.holdAccountable,
+      posotivePerformanceExample: this.posotivePerformanceExample,
+      improveExample: this.improveExample,
+      mainGoal: this.mainGoal,
+      learningGoal: this.learningGoal,
+      leadershipTeam: this.leadershipTeam,
+      feedback: this.feedback,
+      assessmentYear: this.completedDate.value?.getFullYear().toString()
+    }
+
+    this.api.saveSelfAssessment(newSelfAssessment).subscribe((res: any) => {});
+
+    alert("Created Self Assessment Successfully!")
+
+    this.setDefaultInputs();
+    this.setDefaultInputs();
+  }
+
+  createYearValue(year: string) {
+    return { value: year, viewValue: year };
   }
 
   setDefaultInputs() {
@@ -46,10 +138,14 @@ export class PDP2Component {
     this.learningGoal = "Answer goes here.";
     this.leadershipTeam = "Answer goes here.";
     this.feedback = "Answer goes here.";
+
+    this.selectedYear = "";
+
+    this.getAssessmentYears();
   }
 
-  getASelfAssessment(employeeId: string, assessmentYear: string) {
-    this.api.getASelfAssessment(employeeId, assessmentYear).subscribe((res: any) => {
+  getASelfAssessment(assessmentYear: string) {
+    this.api.getASelfAssessment(this.api.globalUserId, assessmentYear).subscribe((res: any) => {
       if (res.length != 0) {
         this.currentSelfAssessmentId = res[0].id;
         this.employeeName = res[0].employeeName;
@@ -76,11 +172,14 @@ export class PDP2Component {
   }
 
   deleteSelfAssessment() {
-    // can do some magic with the completed date once I figure it out.
     this.api.deleteSelfAssessment(this.currentSelfAssessmentId).subscribe((res: any) => {
-      alert(res);
+      alert("Item deleted successfully.");
       this.setDefaultInputs();
     })
+  }
+
+  ngOnInit() {
+    this.getAssessmentYears();
   }
 
   title = 'Risen One Company Portal';
@@ -109,6 +208,9 @@ export class PDP2Component {
   leadershipTeam = "Answer goes here.";
   feedback = "Answer goes here.";
 
+  selectedYear = "";
+  easyYears = [];
+
   tiles: Tile[] = [
     { text: 'One', cols: 1, rows: 1 },
     { text: 'Two', cols: 1, rows: 1 },
@@ -125,10 +227,5 @@ export class PDP2Component {
     { text: 'Thirteen', cols: 1, rows: 1 },
   ];
 
-  years: Year[] = [
-    { value: '2023', viewValue: '2023' },
-    { value: '2022', viewValue: '2022' },
-    { value: '2021', viewValue: '2021' },
-    { value: '2020', viewValue: '2020' }
-  ];
+  years: Year[] = [];
 }

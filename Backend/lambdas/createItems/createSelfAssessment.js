@@ -52,7 +52,7 @@ exports.createSelfAssessment = async (event, context, callback) => {
             assessmentYear: data.assessmentYear,
             createdDate: dt,
             createdTimestamp: ts,
-            updatedDate: dt,
+            updatedDate: data.updatedDate || dt,
             updatedTimestamp: ts
         }
     }
