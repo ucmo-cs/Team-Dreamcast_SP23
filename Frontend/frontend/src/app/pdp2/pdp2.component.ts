@@ -27,8 +27,8 @@ export class PDP2Component {
     });
   }
 
-  getASelfAssessment(assessmentId:string) {
-    this.api.getASelfAssessments(assessmentId).subscribe((res:any)=> {
+  getASelfAssessment(employeeId:string, assessmentYear:string) {
+    this.api.getASelfAssessment(employeeId, assessmentYear).subscribe((res:any)=> {
       console.log(res);
     })
   }
