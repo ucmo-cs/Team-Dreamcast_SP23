@@ -77,7 +77,21 @@ exports.updateItem = async (event, context, callback) => {
             expressionAttributeValuesObject = {
                 ':employeeId': data.employeeId,
                 ':employeeName': data.employeeName,
-                ':goals': data.goals,
+                ':accomplishments': data.accomplishments,
+                ':takeaways': data.takeaways,
+                ':obstaclesOvercame': data.obstaclesOvercame,
+                ':improvementAreas': data.improvementAreas,
+                ':supportImprovement': data.supportImprovement,
+                ':hurdles': data.hurdles,
+                ':milestones': data.milestones,
+                ':holdAccountable': data.holdAccountable,
+                ':posotivePerformanceExample': data.posotivePerformanceExample,
+                ':improveExample': data.improveExample,
+                ':mainGoal': data.mainGoal,
+                ':learningGoal': data.learningGoal,
+                ':leadershipTeam': data.leadershipTeam,
+                ":feedback": data.feedback,
+                ":assessmentYear": data.assessmentYear,
                 ':updatedTimestamp': ts,
                 ':updatedDate': dt
             }
@@ -127,7 +141,7 @@ function getLambdaUpdateExpression(eventBody) {
 }
 
 function addZero(i) {
-    if (i<10) {
+    if (i < 10) {
         i = '0' + i;
     }
     return i;

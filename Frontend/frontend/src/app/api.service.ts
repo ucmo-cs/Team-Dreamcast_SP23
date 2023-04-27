@@ -24,7 +24,26 @@ export class ApiService {
     return this.http.get<any>(this.selfAssessmentURL);
   }
 
-  getASelfAssessments(assessmentId:string) {
-    return this.http.get<any>(this.selfAssessmentURL + "/" + assessmentId);
+  getASelfAssessment(employeeId:string, assessmentYear:string) {
+    return this.http.get<any>(this.selfAssessmentURL + "/" + employeeId + "/" + assessmentYear);
   }
+
+  getSelfAssessmentYears(employeeId:string) {
+    return this.http.get<any>(this.selfAssessmentURL + "/" + employeeId + "/years");
+  }
+
+  deleteSelfAssessment(selfAssessmentId:string) {
+    return this.http.delete<any>(this.selfAssessmentURL + "/" + selfAssessmentId);
+  }
+
+  saveSelfAssessment(assessment:any) {
+    return this.http.post<any>(this.selfAssessmentURL, assessment);
+  }
+
+  updateSelfAssessment(assessment:any, assesmentId:string) {
+    return this.http.patch<any>(this.selfAssessmentURL + '/' + assesmentId, assessment);
+  }
+
+  globalUser = 'First McLast';
+  globalUserId = '72858bf0-df17-11ed-828b-ed6fee87d3fd';
 }
