@@ -26,6 +26,14 @@
 
 ## Local Dev Set Up
 
+### Frontend
+- navigate to the /Frontend/frontend from the source of the project then run `ng serve` to start the front end.
+
+### Backend
+- Open two terminal windows in the /Backend folder and run the two commands (one per window)
+    - `sls dynamodb start --migrate`
+    - `serverless offline`
+
 - Postman Collection - https://red-eclipse-389097.postman.co/workspace/My-Workspace~858a3516-73eb-4bed-80ab-61d214a9b059/collection/23146935-eb8af17b-8b3e-4421-bc2a-5e8f59e5b387?action=share&creator=23146935
 
 - Presentation Powerpoint Link - https://docs.google.com/presentation/d/1Q0qXExeOG-cU_7y4IFDfg4J_0H7LRgD-MuJE-Tv458I/edit?usp=sharing
