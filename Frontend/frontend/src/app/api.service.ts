@@ -13,9 +13,9 @@ export class ApiService {
   private selfAssessmentURL = this.baseUrl + "/self-assessment";
   private personalDevelopmentURL = this.baseUrl + "/personal-development-plan";
 
-  //this constructor is to call the httpClient
-    constructor(private http: HttpClient) { }
-  //this is the function to get said url basically.
+//this constructor is to call the httpClient
+  constructor(private http: HttpClient) { }
+//this is the function to get said url basically.
   getEmployees() {
     return this.http.get<any>(this.employeeURL);
   }
@@ -44,8 +44,6 @@ export class ApiService {
     return this.http.patch<any>(this.selfAssessmentURL + '/' + assesmentId, assessment);
   }
 
-  ////////
-
   deletePersonalDevelopment(personalDevelopmentId:string) {
     return this.http.delete<any>(this.personalDevelopmentURL + "/" + personalDevelopmentId);
   }
@@ -53,7 +51,6 @@ export class ApiService {
   getAPersonalDevelopment(planId:string) {
     return this.http.get<any>(this.selfAssessmentURL + "/" + planId);
   }
-
 
   globalUser = 'First McLast';
   globalUserId = '72858bf0-df17-11ed-828b-ed6fee87d3fd';
