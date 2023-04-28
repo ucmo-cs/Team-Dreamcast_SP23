@@ -26,6 +26,8 @@
 
 ## Local Dev Set Up
 
+- Postman Collection - https://red-eclipse-389097.postman.co/workspace/My-Workspace~858a3516-73eb-4bed-80ab-61d214a9b059/collection/23146935-eb8af17b-8b3e-4421-bc2a-5e8f59e5b387?action=share&creator=23146935
+
 ## Documentation
 ```mermaid
 erDiagram
